@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 # wagtail url includes
-#from wagtail.wagtailadmin import urls as wagtailadmin_urls
-#from wagtail.wagtaildocs import urls as wagtaildocs_urls
-#from wagtail.wagtailcore import urls as wagtail_urls
+from wagtail.wagtailadmin import urls as wagtailadmin_urls
+from wagtail.wagtailsearch import urls as wagtailsearch_urls
+from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.wagtailcore import urls as wagtail_urls
 
 # for development, static and media files served from here
 from django.conf import settings
@@ -26,9 +27,20 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^django_admin/', admin.site.urls),
+    url(r'^django-admin/', include(admin.site.urls)),
+
+    url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^search/', include(wagtailsearch_urls)),
+    url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^neighborhoods/', include(wagtail_urls)),
+
+    # our app's pages
     url(r'^', include('neighborhoods.urls')),
-    #url(r'^admin/', include(wagtailadmin_urls)),
-    #url(r'^documents/', include(wagtaildocs_urls)),
-    #url(r'^neighborhoods/', include(wagtail_urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    # For anything not caught by a more specific rule above, hand over to
+    # Wagtail's serving mechanism
+    url(r'', include(wagtail_urls)),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

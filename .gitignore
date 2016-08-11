@@ -48,4 +48,5 @@ Thumbs.db
 ##########
 env/
 uchicago/uchicago/settings.py
+uchicago/media/
 
