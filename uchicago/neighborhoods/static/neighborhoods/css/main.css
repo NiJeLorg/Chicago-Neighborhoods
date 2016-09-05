@@ -211,9 +211,18 @@ a:focus {
 .content-section {
   padding: 50px 0;
 }
+.map-section {
+  padding-top: 50px;
+}
+#map {
+  height: 300px;
+}
 @media (min-width: 767px) {
   .content-section {
     padding: 100px 0;
+  }
+  #map {
+    height: 750px;
   }
 }
 .grey {
@@ -267,4 +276,5 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
 }
+
 

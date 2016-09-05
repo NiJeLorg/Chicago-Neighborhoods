@@ -1,47 +1,30 @@
 /*!
- * Main css for Univerisyt of Chicago Draw Neighborhood Tools
+ * CSS for University of Chicago Draw Neighborhood Tools
  */
 
-body {
-	padding: 0;
-	margin: 0;
+
+.hidden {
+    display: none;
 }
 
-html, body {
-	height: 100%;
+#map { 
+    height: 500px; 
 }
 
-/* Map CSS */
-#content, #map {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    width:100%;
-	overflow: auto;
-	-webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;	
-}
-
-.absolutePostionedDiv {
-	pointer-events: none;
-	position: absolute;
-	top: 20px;
-	bottom: 0;
-	left: 0;
-	right: 0; 
-}
-
-.absolutePostionedDiv .touch {
-	pointer-events: all;
-}
-
-/* leaflet freedraw css */
 #map.mode-create {
     cursor: crosshair !important;
+}
+
+#map g path {
+    transition: all 0.25s;
+    stroke-width: 4px;
+    stroke-opacity: 1;
+    stroke: #D7217E;
+    position: absolute;
+    z-index: 1001;
+    fill: #D7217E;
+    fill-opacity: .75;
+    -webkit-filter: none;
 }
 
 #map.mode-delete path {
@@ -85,24 +68,4 @@ html, body {
     height: 100%;
     z-index: 2001;
     pointer-events: none;
-}
-
-
-/* General Margins / Padding */
-.marginTop20 {
-	margin-top: 20px;
-}
-
-.marginTop5 {
-	margin-top: 5px;
-}
-
-.marginBottom20 {
-	margin-bottom: 20px;
-}
-
-
-/* Media Queries */
-@media (min-width: 768px) { 
-
 }
