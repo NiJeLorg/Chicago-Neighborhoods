@@ -148,22 +148,22 @@
 <script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
 <script type="text/javascript">
 var draw_neighborhood;
-{% for block in page.draw_neighborhood %}
+/*{% for block in page.draw_neighborhood %}
 draw_neighborhood = '{{ block.value }}'.replace(/&quot;/g,'"');
-{% endfor %}
+{% endfor %}*/
 {% image page.introductory_image original as background_image %}
 {% if background_image.url %}
 window.onload = function() {
   var background_image = '{{ background_image.url }}';
   $('.intro').css('background-image', 'url(' + background_image + ')');
   $('.intro').css('opacity', '1');
-  //app.init();
+  app.init();
 };
 {% else %}
 window.onload = function() {
   var background_image = '{{ background_image.url }}';
   $('.intro').css('opacity', '1');
-  //app.init();
+  app.init();
 };
 {% endif %}
 </script>

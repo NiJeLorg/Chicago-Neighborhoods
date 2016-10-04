@@ -63,7 +63,7 @@ drawApp.loadDrawTools = function (){
     // use leaflet.draw tools instead
     drawApp.map.addControl(new L.Control.Draw({
         edit: { featureGroup: drawApp.FEATURELAYER },
-        draw: { circle: false },
+        draw: { circle: true },
     }));
 
     // set up listeners for drawing
