@@ -36,9 +36,6 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#bounds">Bounds</a>
-                </li>
-                <li>
                     <a class="page-scroll" href="#sketches">Sketches</a>
                 </li>
                 <li>
@@ -78,13 +75,6 @@
           </div>
       </div>
   </header>
-
-  <!-- Map Drawing Section -->
-  <section id="bounds">
-      <div class="map-section">
-        <div id='map'></div>
-      </div>
-  </section>
 
   <!-- Content Section -->
   <section id="sketches" class="container content-section">
@@ -167,13 +157,13 @@ window.onload = function() {
   var background_image = '{{ background_image.url }}';
   $('.intro').css('background-image', 'url(' + background_image + ')');
   $('.intro').css('opacity', '1');
-  app.init();
+  //app.init();
 };
 {% else %}
 window.onload = function() {
   var background_image = '{{ background_image.url }}';
   $('.intro').css('opacity', '1');
-  app.init();
+  //app.init();
 };
 {% endif %}
 </script>

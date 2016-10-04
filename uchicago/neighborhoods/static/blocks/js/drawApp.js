@@ -5,13 +5,18 @@
 function drawApp() {}
 
 drawApp.init = function () {
-    drawApp.map = new L.Map('map', {
+    var mapId = 'map_' + prefix;
+    drawApp.map = new L.Map(mapId, {
         minZoom:10,
         maxZoom:18,
         center: [41.848614, -87.684616],
         zoom: 11,
         scrollWheelZoom: false,
+        zoomControl: false,
     });
+
+    // add new zoom control in lower right
+    new L.Control.Zoom({ position: 'bottomright' }).addTo(drawApp.map);
 
     // set a tile layer
     drawApp.tiles = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', { attribution: 'Map tiles by <a href=\"http://stamen.com\">Stamen Design</a>, under <a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">CC BY 3.0</a>. Data by <a href=\"http://www.openstreetmap.org/\" target=\"_blank\">OpenStreetMap</a>, under ODbL.'
@@ -21,11 +26,10 @@ drawApp.init = function () {
     drawApp.map.addLayer(drawApp.tiles);
 
     // create feature group for draw tools 
-    drawApp.FEATURELAYER = new L.FeatureGroup();
+    drawApp.FEATURELAYER = new L.FeatureGroup().addTo(drawApp.map);
 
     // clear previous data
     drawApp.GEOJSON = null;
-    drawApp.LATLNGS = [];
 
     // load drawnNeighborhood if it exists, if not start with create free draw
     drawApp.loadDrawnGeojson();
@@ -33,13 +37,12 @@ drawApp.init = function () {
 }
 
 drawApp.loadDrawnGeojson = function (){
-    drawApp.savedGeojson = $("#draw_neighborhood-0-value-drawnNeighborhood").val();
+    drawApp.savedGeojson = $("#"+prefix+"-drawnNeighborhood").val();
     if (drawApp.savedGeojson) {
         drawApp.GEOJSON = L.geoJson(JSON.parse(drawApp.savedGeojson));
 
         drawApp.GEOJSON.eachLayer(function(layer) {
             // create latlngs array from feature layer
-            drawApp.LATLNGS.push(layer.getLatLngs());
             drawApp.FEATURELAYER.addLayer(layer);
         });             
 
@@ -57,8 +60,35 @@ drawApp.loadDrawnGeojson = function (){
 
 drawApp.loadDrawTools = function (){
 
+    // use leaflet.draw tools instead
+    drawApp.map.addControl(new L.Control.Draw({
+        edit: { featureGroup: drawApp.FEATURELAYER },
+        draw: { circle: false },
+    }));
+
+    // set up listeners for drawing
+    drawApp.map.on('draw:created', function(event) {
+        var layer = event.layer;
+        drawApp.FEATURELAYER.addLayer(layer);
+        drawApp.GEOJSON = drawApp.FEATURELAYER.toGeoJSON();
+        $("#"+prefix+"-drawnNeighborhood").val(JSON.stringify(drawApp.GEOJSON));        
+    });
+
+    drawApp.map.on('draw:edited', function (event) {
+        console.log(event);
+        drawApp.GEOJSON = drawApp.FEATURELAYER.toGeoJSON();
+        $("#"+prefix+"-drawnNeighborhood").val(JSON.stringify(drawApp.GEOJSON));  
+    }); 
+    drawApp.map.on('draw:deleted', function (event) {
+        drawApp.GEOJSON = drawApp.FEATURELAYER.toGeoJSON();
+        $("#"+prefix+"-drawnNeighborhood").val(JSON.stringify(drawApp.GEOJSON));  
+    }); 
+
+     
+
     //add freedraw now so we can set mode in a bit
-    drawApp.freedraw = new L.FreeDraw({
+    // depreciated for now
+/*    drawApp.freedraw = new L.FreeDraw({
         mode: L.FreeDraw.MODES.CREATE | L.FreeDraw.MODES.EDIT | L.FreeDraw.MODES.APPEND
     });
 
@@ -85,7 +115,7 @@ drawApp.loadDrawTools = function (){
             drawApp.freedraw.createPolygon(drawApp.LATLNGS[i]);
         }
     }
-
+*/
 
 
 

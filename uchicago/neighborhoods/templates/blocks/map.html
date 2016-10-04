@@ -1,5 +1,5 @@
 <div class="{{ classname }}" data-prefix="{{ prefix }}">
-    <div id='map'></div>
+    <div id='map_{{ prefix }}' class='map'></div>
 
     <ul class="hidden">
         {% for child in children.values %}
@@ -9,6 +9,7 @@
 </div>
 
 <script type="text/javascript">
+	var prefix = '{{ prefix }}';
 	drawApp.init();
 </script>
 

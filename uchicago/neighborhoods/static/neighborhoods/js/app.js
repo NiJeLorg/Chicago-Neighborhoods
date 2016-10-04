@@ -44,7 +44,6 @@ app.createListeners = function () {
 }
 
 app.createMap = function () {
-    console.log(draw_neighborhood);
 
     app.map = new L.Map('map', {
         minZoom:10,

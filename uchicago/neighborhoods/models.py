@@ -25,18 +25,20 @@ class HomePage(Page):
 
 # model class for map drawing tools
 class DrawMapBlock(blocks.StructBlock):
+	idNum = models.AutoField(primary_key=False)
 	drawnNeighborhood = blocks.TextBlock()
 
 	class Meta:
 		form_classname = 'map-block struct-block'
 		icon = 'site'
-		label = 'Draw Hood'
+		label = 'Draw Tools'
 		form_template = 'blocks/map.html'
 		template = 'blocks/json.html'
 
 class ChicagoNeighborhoods(Page):
 
 	# Database fields
+	neighborhood_name = models.CharField(max_length=255, default='', null=False, blank=False)
 	date = models.DateField("Updated On")
 	introductory_text = models.CharField(max_length=255, default='', null=False, blank=False)
 	introductory_image = models.ForeignKey(
@@ -80,6 +82,7 @@ class ChicagoNeighborhoods(Page):
 
 	# Search index configuraiton
 	search_fields = Page.search_fields + [
+		index.SearchField('neighborhood_name'),
 		index.SearchField('introductory_text'),
 		index.SearchField('social_mix'),
 		index.SearchField('public_space'),
@@ -90,6 +93,7 @@ class ChicagoNeighborhoods(Page):
 
 	# Editor panels configuration
 	content_panels = Page.content_panels + [
+		FieldPanel('neighborhood_name'),
 		FieldPanel('introductory_text'),
 		ImageChooserPanel('introductory_image'),
 		StreamFieldPanel('draw_neighborhood'),
@@ -120,15 +124,13 @@ class UrbanDesign(Page):
 		on_delete=models.SET_NULL,
 		related_name='+'
 	)
-	draw_neighborhood = StreamField([
-		('draw', DrawMapBlock()),
-	],null=False,blank=False)
 	sketches = StreamField([
 		('heading', blocks.CharBlock(classname="heading")),
 		('paragraph', blocks.RichTextBlock()),
 		('image', ImageChooserBlock()),
 		('video', EmbedBlock()),
 		('document', DocumentChooserBlock()),
+		('draw', DrawMapBlock()),
 	])
 	city_beautiful = StreamField([
 		('heading', blocks.CharBlock(classname="heading")),
@@ -136,6 +138,7 @@ class UrbanDesign(Page):
 		('image', ImageChooserBlock()),
 		('video', EmbedBlock()),
 		('document', DocumentChooserBlock()),
+		('draw', DrawMapBlock()),
 	])
 	transects = StreamField([
 		('heading', blocks.CharBlock(classname="heading")),
@@ -143,6 +146,7 @@ class UrbanDesign(Page):
 		('image', ImageChooserBlock()),
 		('video', EmbedBlock()),
 		('document', DocumentChooserBlock()),
+		('draw', DrawMapBlock()),
 	])
 	diversity = StreamField([
 		('heading', blocks.CharBlock(classname="heading")),
@@ -150,6 +154,7 @@ class UrbanDesign(Page):
 		('image', ImageChooserBlock()),
 		('video', EmbedBlock()),
 		('document', DocumentChooserBlock()),
+		('draw', DrawMapBlock()),
 	])
 	civic_art = StreamField([
 		('heading', blocks.CharBlock(classname="heading")),
@@ -157,6 +162,7 @@ class UrbanDesign(Page):
 		('image', ImageChooserBlock()),
 		('video', EmbedBlock()),
 		('document', DocumentChooserBlock()),
+		('draw', DrawMapBlock()),
 	])
 
 	# Search index configuraiton
@@ -174,7 +180,6 @@ class UrbanDesign(Page):
 	content_panels = Page.content_panels + [
 		FieldPanel('introductory_text'),
 		ImageChooserPanel('introductory_image'),
-		StreamFieldPanel('draw_neighborhood'),
 		StreamFieldPanel('sketches'),
 		StreamFieldPanel('city_beautiful'),
 		StreamFieldPanel('transects'),
