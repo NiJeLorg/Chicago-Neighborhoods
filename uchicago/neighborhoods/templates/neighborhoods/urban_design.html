@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block head_js_block %}
+<script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
 {% endblock %}
 	
 
@@ -145,12 +146,7 @@
 {% endblock %}
 
 {% block js_block %}
-<script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
 <script type="text/javascript">
-var draw_neighborhood;
-/*{% for block in page.draw_neighborhood %}
-draw_neighborhood = '{{ block.value }}'.replace(/&quot;/g,'"');
-{% endfor %}*/
 {% image page.introductory_image original as background_image %}
 {% if background_image.url %}
 window.onload = function() {

@@ -1,3 +1,17 @@
+<!-- map container -->
+<div id="map9999" class="mapContainer"></div>
 
-{{ value.idNum }}
-{{ value.drawnNeighborhood }}
+<!-- JS that creates our generic map -->
+<script type="text/javascript">
+    app.drawnNeighborhood = '{{ value.drawnNeighborhood }}'.replace(/&quot;/g,'"');
+    app.mapId = 'map_' + app.mapCount;
+    console.log(app.mapId);
+    $('#map9999').attr('id', app.mapId);
+    // initilize map
+    app.createMap(app.mapId, app.drawnNeighborhood);
+    // increment for the next map
+    app.mapCount++;  		
+</script>
+
+
+

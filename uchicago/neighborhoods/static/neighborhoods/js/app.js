@@ -5,13 +5,8 @@
 function app() {}
 
 app.init = function () {
-
     // set up listeners
     app.createListeners();
-
-    // set up maps
-    app.createMap();
-
 }
 
 app.collapseNavbar = function () {
@@ -43,9 +38,9 @@ app.createListeners = function () {
 
 }
 
-app.createMap = function () {
-
-    app.map = new L.Map('map', {
+app.createMap = function (mapId, drawnNeighborhood) {
+    app.map = {};
+    app.map[mapId] = new L.Map(mapId, {
         minZoom:10,
         maxZoom:18,
         center: [41.848614, -87.684616],
@@ -54,20 +49,32 @@ app.createMap = function () {
     });
 
     // set a tile layer
-    app.tiles = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', { attribution: 'Map tiles by <a href=\"http://stamen.com\">Stamen Design</a>, under <a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">CC BY 3.0</a>. Data by <a href=\"http://www.openstreetmap.org/\" target=\"_blank\">OpenStreetMap</a>, under ODbL.'
+    app.map[mapId].tiles = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', { attribution: 'Map tiles by <a href=\"http://stamen.com\">Stamen Design</a>, under <a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">CC BY 3.0</a>. Data by <a href=\"http://www.openstreetmap.org/\" target=\"_blank\">OpenStreetMap</a>, under ODbL.'
     });
 
     // add these tiles to our map
-    app.map.addLayer(app.tiles);
+    app.map[mapId].addLayer(app.map[mapId].tiles);
 
-    if (draw_neighborhood) {
-        app.GEOJSON = L.geoJson(JSON.parse(draw_neighborhood), {
+    if (drawnNeighborhood) {
+        app.map[mapId].GEOJSON = L.geoJson(JSON.parse(drawnNeighborhood), {
                     style: app.getStyleFor_GEOJSON,
+                    pointToLayer: function(feature, latlng) {
+                        if (typeof feature.properties.radius !== 'undefined') {
+                            return new L.Circle(latlng, feature.properties.radius);
+                        } else {
+                            return new L.marker(latlng);
+                        }
+                    },
+                    onEachFeature: function (feature, layer) {
+                        if (feature.properties.annotation) {
+                            layer.bindPopup(feature.properties.annotation);
+                        } 
+                    }
                 });
-        app.GEOJSON.addTo(app.map);
+        app.map[mapId].GEOJSON.addTo(app.map[mapId]);
 
-        var bounds = app.GEOJSON.getBounds();
-        app.map.fitBounds(bounds);
+        var bounds = app.map[mapId].GEOJSON.getBounds();
+        app.map[mapId].fitBounds(bounds);
    
     }
 
@@ -82,6 +89,11 @@ app.getStyleFor_GEOJSON = function (feature){
         fillColor: "#D7217E",
     };
 }
+
+// scoped variables
+app.mapCount = 1;
+app.drawnNeighborhood;
+app.mapId;
 
 
 

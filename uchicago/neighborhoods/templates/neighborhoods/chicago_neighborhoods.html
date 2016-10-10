@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block head_js_block %}
+<script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
 {% endblock %}
 	
 
@@ -18,7 +19,7 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                 <i class="fa fa-bars"></i>
@@ -63,7 +64,7 @@
           <div class="container">
               <div class="row">
                   <div class="col-md-8 col-md-offset-2">
-                      <h1 class="brand-heading">{{ page.title }}<br /></h1>
+                      <h1 class="brand-heading">{{ page.neighborhood_name }}<br /></h1>
                       <div class="clearfix"></div>
                       <p class="intro-text"><br />{{ page.introductory_text }}</p>
                       <div class="clearfix"></div>                       
@@ -77,23 +78,28 @@
   </header>
 
   <!-- Map Drawing Section -->
-  <section id="bounds" class="text-center">
-      <div class="map-section">
-        <div id='map'></div>
+  <section id="bounds" class="container content-section">
+      <div class="row">
+          <div class="col-sm-12">
+            <h1 class="text-center">Neighborhood Bounds</h1>
+            {% include_block page.draw_neighborhood %}
+          </div>
       </div>
   </section>
 
   <!-- Content Section -->
-  <section id="social_mix" class="container content-section">
+  <section id="social_mix" class="content-section grey">
+    <div class="container"> 
       <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <h1 class="text-center">Social Mix</h1>
             {% include_block page.social_mix %}
           </div>
       </div>
+    </div>
   </section>
 
-  <section id="public_space" class="content-section grey">
+  <section id="public_space" class="content-section">
     <div class="container">
       <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
@@ -104,16 +110,18 @@
     </div>
   </section>
 
-  <section id="amenities" class="container content-section">
+  <section id="amenities" class="content-section grey">
+    <div class="container">
       <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <h1 class="text-center">Amenities</h1>
             {% include_block page.amenities %}
           </div>
       </div>
+    </div>
   </section>
 
-  <section id="connections" class="content-section grey">
+  <section id="connections" class="content-section">
     <div class="container">
       <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
@@ -126,8 +134,14 @@
 
   <!-- Footer -->
   <footer>
-      <div class="container content-section text-center">
-          <p>Hood Mapping is a project of <a href="http://urbanism.uchicago.edu/">Urbanism at the University of Chicago</a></p>
+      <div class="content-section grey text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <p>Hood Mapping is a project of <a href="http://urbanism.uchicago.edu/">Urbanism at the University of Chicago</a>.</p>
+            </div>
+          </div>
+        </div>
       </div>
   </footer>
 
@@ -139,27 +153,22 @@
 {% endblock %}
 
 {% block js_block %}
-<script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
 <script type="text/javascript">
-var draw_neighborhood;
-/*{% for block in page.draw_neighborhood %}
-//draw_neighborhood = '{{ block.value }}'.replace(/&quot;/g,'"');
-{% endfor %}*/
-{% image page.introductory_image original as background_image %}
-{% if background_image.url %}
-window.onload = function() {
-  var background_image = '{{ background_image.url }}';
-  $('.intro').css('background-image', 'url(' + background_image + ')');
-  $('.intro').css('opacity', '1');
-  app.init();
-};
-{% else %}
-window.onload = function() {
-  var background_image = '{{ background_image.url }}';
-  $('.intro').css('opacity', '1');
-  app.init();
-};
-{% endif %}
+  {% image page.introductory_image original as background_image %}
+  {% if background_image.url %}
+    window.onload = function() {
+      var background_image = '{{ background_image.url }}';
+      $('.intro').css('background-image', 'url(' + background_image + ')');
+      $('.intro').css('opacity', '1');
+      app.init();
+    };
+  {% else %}
+    window.onload = function() {
+      var background_image = '{{ background_image.url }}';
+      $('.intro').css('opacity', '1');
+      app.init();
+    };
+  {% endif %}
 </script>
 {% endblock %}
 

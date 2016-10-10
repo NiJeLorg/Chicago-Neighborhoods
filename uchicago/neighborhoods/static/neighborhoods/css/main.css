@@ -74,7 +74,10 @@ a:focus {
 .navbar-custom .nav li.active a:hover {
   color: #aaa;
 }
-@media (min-width: 768px) {
+.navbar-custom.top-nav-collapse {
+  border-bottom: 1px solid rgba(150, 150, 150, 0.3);
+}
+@media (min-width: 992px) {
   .navbar-custom {
     padding: 20px 0;
     letter-spacing: 1px;
@@ -86,7 +89,6 @@ a:focus {
   .navbar-custom.top-nav-collapse {
     padding: 0;
     background: white;
-    border-bottom: 1px solid rgba(150, 150, 150, 0.3);
   }
   .intro.top-nav-collapse {
     border-top: 110px solid rgba(255,255,255,0);
@@ -214,15 +216,17 @@ a:focus {
 .map-section {
   padding-top: 50px;
 }
-#map {
+.mapContainer {
+  margin: 20px 0;
   height: 300px;
+  border: 1px solid #ccc;
 }
 @media (min-width: 767px) {
   .content-section {
     padding: 100px 0;
   }
-  #map {
-    height: 750px;
+  .mapContainer {
+    height: 75vh;
   }
 }
 .grey {
