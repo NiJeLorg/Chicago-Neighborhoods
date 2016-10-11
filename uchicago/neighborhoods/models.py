@@ -50,6 +50,11 @@ class ChicagoNeighborhoods(Page):
 	)
 	draw_neighborhood = StreamField([
 		('draw', DrawMapBlock()),
+		('heading', blocks.CharBlock(classname="heading")),
+		('paragraph', blocks.RichTextBlock()),
+		('image', ImageChooserBlock()),
+		('video', EmbedBlock()),
+		('document', DocumentChooserBlock()),
 	],null=False,blank=False)
 	social_mix = StreamField([
 		('heading', blocks.CharBlock(classname="heading")),
