@@ -25,7 +25,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="/">
-                <i class="fa fa-building" aria-hidden="true"></i><span class="light">Hood Mapping</span> {{ page.neighborhood_name }}
+                <i class="fa fa-building" aria-hidden="true"></i><span class="light">Hood Mapping</span>
             </a>
         </div>
 
@@ -37,19 +37,10 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#bounds">Bounds</a>
+                    <a href="/chicago-neighborhoods/">Chicago Neighborhoods</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#social_mix">Social Mix</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#public_space">Public Space</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#amenities">Amenities</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#connections">Connections</a>
+                    <a href="/urban-design-chicago/">Urban Design: The Chicago Experience</a>
                 </li>
             </ul>
         </div>
@@ -64,11 +55,9 @@
           <div class="container">
               <div class="row">
                   <div class="col-md-8 col-md-offset-2">
-                      <h1 class="brand-heading">{{ page.neighborhood_name }}<br /></h1>
+                      <h1 class="brand-heading">{{ page.title }}<br /></h1>
                       <div class="clearfix"></div>
-                      <p class="intro-text"><br />{{ page.introductory_text }}</p>
-                      <div class="clearfix"></div>                       
-                      <a href="#bounds" class="btn btn-circle page-scroll">
+                      <a href="#introduction" class="btn btn-circle page-scroll">
                           <i class="fa fa-angle-double-down animated"></i>
                       </a>
                   </div>
@@ -78,58 +67,23 @@
   </header>
 
   <!-- Map Drawing Section -->
-  <section id="bounds" class="container content-section">
-      <div class="row">
-          <div class="col-sm-12">
-            <h1 class="text-center">Neighborhood Bounds</h1>
-            {% include_block page.draw_neighborhood %}
-          </div>
-      </div>
-  </section>
-
-  <!-- Content Section -->
-  <section id="social_mix" class="content-section grey">
-    <div class="container"> 
+  <section id="introduction" class="container content-section">
       <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Social Mix</h1>
-            {% include_block page.social_mix %}
+            <h1 class="text-center"></h1>
+            {{ page.body|richtext }}
           </div>
       </div>
-    </div>
-  </section>
-
-  <section id="public_space" class="content-section">
-    <div class="container">
       <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Public Space</h1>
-            {% include_block page.public_space %}
+            <h3>Check out more!</h3>
+            <ul>
+            {% for page in self.get_children.specific %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+            </ul>
           </div>
       </div>
-    </div>
-  </section>
-
-  <section id="amenities" class="content-section grey">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Amenities</h1>
-            {% include_block page.amenities %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="connections" class="content-section">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Connections</h1>
-            {% include_block page.connections %}
-          </div>
-      </div>
-    </div>
   </section>
 
   <!-- Footer -->
@@ -154,21 +108,11 @@
 
 {% block js_block %}
 <script type="text/javascript">
-  {% image page.introductory_image original as background_image %}
-  {% if background_image.url %}
-    window.onload = function() {
-      var background_image = '{{ background_image.url }}';
-      $('.intro').css('background-image', 'url(' + background_image + ')');
-      $('.intro').css('opacity', '1');
-      app.init();
-    };
-  {% else %}
-    window.onload = function() {
-      var background_image = '{{ background_image.url }}';
-      $('.intro').css('opacity', '1');
-      app.init();
-    };
-  {% endif %}
+  window.onload = function() {
+    var background_image = '{{ background_image.url }}';
+    $('.intro').css('opacity', '1');
+    app.init();
+  };
 </script>
 {% endblock %}
 
