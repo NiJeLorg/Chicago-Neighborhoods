@@ -39,7 +39,6 @@ app.createListeners = function () {
 }
 
 app.createMap = function (mapId, drawnNeighborhood) {
-    app.map = {};
     app.map[mapId] = new L.Map(mapId, {
         minZoom:10,
         maxZoom:18,
@@ -55,6 +54,13 @@ app.createMap = function (mapId, drawnNeighborhood) {
     // add these tiles to our map
     app.map[mapId].addLayer(app.map[mapId].tiles);
 
+    // create empty container for overlays
+    app.overlayMaps[mapId] = {};
+    app.baseMaps[mapId] = {
+        "Background Map": app.map[mapId].tiles
+    };
+    app.layerCounter[mapId] = 1;
+
     if (drawnNeighborhood) {
         app.map[mapId].GEOJSON = L.geoJson(JSON.parse(drawnNeighborhood), {
                     style: app.getStyleFor_GEOJSON,
@@ -66,12 +72,26 @@ app.createMap = function (mapId, drawnNeighborhood) {
                         }
                     },
                     onEachFeature: function (feature, layer) {
+                        // as we loop through each layer, add to map and layer controller
+                        // add annotations
                         if (feature.properties.annotation) {
+                            app.overlayMaps[mapId][feature.properties.annotation] = layer;
                             layer.bindPopup(feature.properties.annotation);
-                        } 
+                            // add layer
+                            layer.addTo(app.map[mapId]);
+                        } else {
+                            app.overlayMaps[mapId]['Layer ' + app.layerCounter[mapId]] = layer;
+                            layer.bindPopup('Layer ' + app.layerCounter[mapId]);
+                            // add layer
+                            layer.addTo(app.map[mapId]);    
+                        }
+                        app.layerCounter[mapId]++;
                     }
                 });
-        app.map[mapId].GEOJSON.addTo(app.map[mapId]);
+        //app.map[mapId].GEOJSON.addTo(app.map[mapId]);
+
+        // create map controller
+        L.control.layers(app.baseMaps[mapId], app.overlayMaps[mapId]).addTo(app.map[mapId]);
 
         var bounds = app.map[mapId].GEOJSON.getBounds();
         app.map[mapId].fitBounds(bounds);
@@ -94,6 +114,11 @@ app.getStyleFor_GEOJSON = function (feature){
 app.mapCount = 1;
 app.drawnNeighborhood;
 app.mapId;
+app.map = {};
+app.overlayMaps = {};
+app.baseMaps = {};
+app.layerCounter = {};
+
 
 
 
