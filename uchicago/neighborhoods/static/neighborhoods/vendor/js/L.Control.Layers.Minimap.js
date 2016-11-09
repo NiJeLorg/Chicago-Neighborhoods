@@ -179,10 +179,11 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 		minimap.setView(map.getCenter(), map.getZoom());
 		map.sync(minimap);
 	    } else if (originalLayer instanceof L.Marker) {
-		minimap.setView(cl.getLatLng(), 17);
+		minimap.setView(cl.getLatLng(), 16);
 	    } else {    
 	    	var bounds = cl.getBounds();
-		    console.log(bounds);
+		var boundsZoom = minimap.getBoundsZoom(bounds);
+		    console.log(boundsZoom);
 	    	minimap.fitBounds(bounds);
 	    }
             //minimap.setView(map.getCenter(), map.getZoom());
