@@ -7,7 +7,8 @@
 
 {% block css_block %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}">    
+<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/vendor/css/control.layers.minimap.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}">
 {% endblock %}
 
 {% block head_js_block %}
@@ -153,6 +154,7 @@
 {% endblock %}
 
 {% block js_block %}
+<script type="text/javascript" src="{% static 'neighborhoods/vendor/js/L.Control.Layers.Minimap.js' %}"></script>
 <script type="text/javascript">
   {% image page.introductory_image original as background_image %}
   {% if background_image.url %}
