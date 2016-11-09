@@ -95,8 +95,6 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 
         var name = L.DomUtil.create('span', '', span);
         name.innerHTML = ' ' + obj.name;
-
-	label._minimap.invalidateSize();
 	
         return label;
     },
