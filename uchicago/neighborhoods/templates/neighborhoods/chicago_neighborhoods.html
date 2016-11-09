@@ -163,12 +163,16 @@
       $('.intro').css('background-image', 'url(' + background_image + ')');
       $('.intro').css('opacity', '1');
       app.init();
+      // invalidate minimap sizes to force redraw
+      setTimeout(function(){ app.invalidateMinimaps() }, 5000);
     };
   {% else %}
     window.onload = function() {
       var background_image = '{{ background_image.url }}';
       $('.intro').css('opacity', '1');
       app.init();
+      // invalidate minimap sizes to force redraw
+      setTimeout(function(){ app.invalidateMinimaps() }, 5000);
     };
   {% endif %}
 </script>
