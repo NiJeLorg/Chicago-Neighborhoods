@@ -93,9 +93,7 @@ app.createMap = function (mapId, drawnNeighborhood) {
         // create map controller
         L.control.layers.minimap(app.baseMaps[mapId], app.overlayMaps[mapId], {
             overlayBackgroundLayer: app.map[mapId].tiles,
-            topPadding: 0,
-            bottomPadding: 10,
-            collapsed: false,
+            collapsed: true,
         }).addTo(app.map[mapId]);
         //L.control.layers(app.baseMaps[mapId], app.overlayMaps[mapId]).addTo(app.map[mapId]);
 
