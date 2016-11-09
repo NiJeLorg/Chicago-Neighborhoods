@@ -93,9 +93,8 @@ app.createMap = function (mapId, drawnNeighborhood) {
         // create map controller
         L.control.layers.minimap(app.baseMaps[mapId], app.overlayMaps[mapId], {
             overlayBackgroundLayer: app.map[mapId].tiles,
-            collapsed: true,
+            collapsed: false,
         }).addTo(app.map[mapId]);
-        //L.control.layers(app.baseMaps[mapId], app.overlayMaps[mapId]).addTo(app.map[mapId]);
 
         var bounds = app.map[mapId].GEOJSON.getBounds();
         app.map[mapId].fitBounds(bounds);
