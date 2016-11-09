@@ -173,10 +173,11 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 
         var map = this._map;
         map.whenReady(function () {
-	    var bounds = originalLayer.getBounds();
-	    minimap.fitBounds(bounds);
-            //minimap.setView(map.getCenter(), map.getZoom());
-            //map.sync(minimap);
+	    console.log(originalLayer);
+	    //var bounds = originalLayer.getBounds();
+	    //minimap.fitBounds(bounds);
+            minimap.setView(map.getCenter(), map.getZoom());
+            map.sync(minimap);
         });
 
         return minimap;
