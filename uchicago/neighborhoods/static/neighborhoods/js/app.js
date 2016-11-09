@@ -119,6 +119,15 @@ app.getStyleFor_GEOJSON = function (feature){
     };
 }
 
+app.invalidateMinimaps = function (){
+    var minimaps = document.querySelectorAll('label[class="leaflet-minimap-container"]');
+    for (var i = 0; i < minimaps.length; ++i) {
+        var minimap = minimaps[i].childNodes.item(0);
+        var map = minimap._miniMap;
+        map.invalidateSize();
+    }
+}
+
 // scoped variables
 app.mapCount = 1;
 app.drawnNeighborhood;
