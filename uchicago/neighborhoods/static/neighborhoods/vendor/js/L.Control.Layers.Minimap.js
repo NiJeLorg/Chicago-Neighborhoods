@@ -161,6 +161,7 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
         minimap.scrollWheelZoom.disable();
 
         // create tilelayer, but do not add it to the map yet.
+	
         if (isOverlay && this.options.overlayBackgroundLayer) {
             // add a background for overlays if a background layer is defined.
             minimap._layer = L.layerGroup([
@@ -173,9 +174,14 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 
         var map = this._map;
         map.whenReady(function () {
-	    console.log(originalLayer);
-	    //var bounds = originalLayer.getBounds();
-	    //minimap.fitBounds(bounds);
+	    var cl = cloneLayer(originalLayer);
+	    if (originalLayer instanceof L.TileLayer || originalLayer instanceof L.ImageOverlay) {
+		    minimap.setView(map.getCenter(), map.getZoom());
+		    map.sync(minimap);
+	    } else {    
+	    	var bounds = cl.getBounds();
+	    	minimap.fitBounds(bounds);
+	    }
             minimap.setView(map.getCenter(), map.getZoom());
             map.sync(minimap);
         });
