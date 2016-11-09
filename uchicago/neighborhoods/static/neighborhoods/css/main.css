@@ -211,7 +211,7 @@ a:focus {
   }
 }
 .content-section {
-  padding: 50px 0;
+  padding: 50px 15px;
 }
 .map-section {
   padding-top: 50px;
@@ -223,7 +223,7 @@ a:focus {
 }
 @media (min-width: 767px) {
   .content-section {
-    padding: 100px 0;
+    padding: 100px 15px;
   }
   .mapContainer {
     height: 75vh;
