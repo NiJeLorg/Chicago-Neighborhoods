@@ -91,9 +91,15 @@ app.createMap = function (mapId, drawnNeighborhood) {
         //app.map[mapId].GEOJSON.addTo(app.map[mapId]);
 
         // create map controller
+        var collapsed;
+        if ($('.mapContainer').width() < 500) {
+            collapsed = true;
+        } else {
+            collapsed = false;
+        }
         L.control.layers.minimap(app.baseMaps[mapId], app.overlayMaps[mapId], {
             overlayBackgroundLayer: app.map[mapId].tiles,
-            collapsed: false,
+            collapsed: collapsed,
         }).addTo(app.map[mapId]);
 
         var bounds = app.map[mapId].GEOJSON.getBounds();
