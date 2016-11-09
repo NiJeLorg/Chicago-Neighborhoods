@@ -175,7 +175,6 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
         var map = this._map;
         map.whenReady(function () {
 	    var cl = cloneLayer(originalLayer);
-		console.log(cl);
 	    if (originalLayer instanceof L.TileLayer || originalLayer instanceof L.ImageOverlay) {
 		minimap.setView(map.getCenter(), map.getZoom());
 		map.sync(minimap);
