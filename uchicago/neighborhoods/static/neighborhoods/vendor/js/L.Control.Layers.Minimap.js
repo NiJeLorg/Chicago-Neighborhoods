@@ -174,9 +174,18 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 
         var map = this._map;
         map.whenReady(function () {
-
-            minimap.setView(map.getCenter(), map.getZoom());
-            map.sync(minimap);
+	    var cl = cloneLayer(originalLayer);
+	    if (originalLayer instanceof L.TileLayer || originalLayer instanceof L.ImageOverlay) {
+		minimap.setView(map.getCenter(), map.getZoom());
+		map.sync(minimap);
+	    } else if (originalLayer instanceof L.Marker) {
+		minimap.setView(cl.getLatLng(), 16);
+	    } else {    
+	    	var bounds = cl.getBounds();
+		var zoom = map.getBoundsZoom(bounds);
+		zoom = zoom - 2;
+	    	minimap.setView(bounds.getCenter(), zoom);
+	    }
         });
 
         return minimap;
