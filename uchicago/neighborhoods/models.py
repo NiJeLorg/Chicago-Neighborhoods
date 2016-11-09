@@ -57,6 +57,7 @@ class ChicagoNeighborhoods(Page):
 		('document', DocumentChooserBlock()),
 	],null=False,blank=False)
 	social_mix = StreamField([
+		('draw', DrawMapBlock()),
 		('heading', blocks.CharBlock(classname="heading")),
 		('paragraph', blocks.RichTextBlock()),
 		('image', ImageChooserBlock()),
@@ -64,6 +65,7 @@ class ChicagoNeighborhoods(Page):
 		('document', DocumentChooserBlock()),
 	])
 	public_space = StreamField([
+		('draw', DrawMapBlock()),
 		('heading', blocks.CharBlock(classname="heading")),
 		('paragraph', blocks.RichTextBlock()),
 		('image', ImageChooserBlock()),
@@ -71,6 +73,7 @@ class ChicagoNeighborhoods(Page):
 		('document', DocumentChooserBlock()),
 	])
 	amenities = StreamField([
+		('draw', DrawMapBlock()),
 		('heading', blocks.CharBlock(classname="heading")),
 		('paragraph', blocks.RichTextBlock()),
 		('image', ImageChooserBlock()),
@@ -78,6 +81,7 @@ class ChicagoNeighborhoods(Page):
 		('document', DocumentChooserBlock()),
 	])
 	connections = StreamField([
+		('draw', DrawMapBlock()),
 		('heading', blocks.CharBlock(classname="heading")),
 		('paragraph', blocks.RichTextBlock()),
 		('image', ImageChooserBlock()),
@@ -129,14 +133,6 @@ class UrbanDesign(Page):
 		on_delete=models.SET_NULL,
 		related_name='+'
 	)
-	sketches = StreamField([
-		('heading', blocks.CharBlock(classname="heading")),
-		('paragraph', blocks.RichTextBlock()),
-		('image', ImageChooserBlock()),
-		('video', EmbedBlock()),
-		('document', DocumentChooserBlock()),
-		('draw', DrawMapBlock()),
-	])
 	city_beautiful = StreamField([
 		('heading', blocks.CharBlock(classname="heading")),
 		('paragraph', blocks.RichTextBlock()),
@@ -173,7 +169,6 @@ class UrbanDesign(Page):
 	# Search index configuraiton
 	search_fields = Page.search_fields + [
 		index.SearchField('introductory_text'),
-		index.SearchField('sketches'),
 		index.SearchField('city_beautiful'),
 		index.SearchField('transects'),
 		index.SearchField('diversity'),
@@ -185,7 +180,6 @@ class UrbanDesign(Page):
 	content_panels = Page.content_panels + [
 		FieldPanel('introductory_text'),
 		ImageChooserPanel('introductory_image'),
-		StreamFieldPanel('sketches'),
 		StreamFieldPanel('city_beautiful'),
 		StreamFieldPanel('transects'),
 		StreamFieldPanel('diversity'),
