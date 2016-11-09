@@ -10,7 +10,8 @@
     // initilize map
     app.createMap(app.mapId, app.drawnNeighborhood);
     // invalidate minimap sizes to force redraw
-    app.invalidateMinimaps();
+    setTimeout(function(){ app.invalidateMinimaps() }, 400);
+    
     // increment for the next map
     app.mapCount++;  		
 </script>
