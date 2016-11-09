@@ -184,6 +184,7 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 	    	var bounds = cl.getBounds();
 	    	minimap.setView(bounds.getCenter(), 16);
 		var zoom = minimap.getBoundsZoom(bounds);
+		console.log(zoom, 'zoom level');
 		minimap.setZoom(zoom);
 	    }
             //minimap.setView(map.getCenter(), map.getZoom());
