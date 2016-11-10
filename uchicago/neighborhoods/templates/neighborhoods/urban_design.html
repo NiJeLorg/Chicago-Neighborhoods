@@ -144,12 +144,14 @@ window.onload = function() {
   $('.intro').css('background-image', 'url(' + background_image + ')');
   $('.intro').css('opacity', '1');
   app.init();
+  setTimeout(function(){ app.invalidateMinimaps() }, 5000);
 };
 {% else %}
 window.onload = function() {
   var background_image = '{{ background_image.url }}';
   $('.intro').css('opacity', '1');
   app.init();
+  setTimeout(function(){ app.invalidateMinimaps() }, 5000);
 };
 {% endif %}
 </script>
