@@ -97,10 +97,13 @@ app.createMap = function (mapId, drawnNeighborhood) {
         } else {
             collapsed = false;
         }
-        L.control.layers.minimap(app.baseMaps[mapId], app.overlayMaps[mapId], {
+        
+        var control = L.control.layers.minimap(app.baseMaps[mapId], app.overlayMaps[mapId], {
             overlayBackgroundLayer: app.map[mapId].tiles,
             collapsed: collapsed,
         }).addTo(app.map[mapId]);
+        
+        console.log(control);
 
         var bounds = app.map[mapId].GEOJSON.getBounds();
         app.map[mapId].fitBounds(bounds);
