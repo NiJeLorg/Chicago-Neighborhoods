@@ -177,7 +177,6 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 	    var cl = cloneLayer(originalLayer);
 	    if (originalLayer instanceof L.TileLayer || originalLayer instanceof L.ImageOverlay) {
 		minimap.setView(map.getCenter(), map.getZoom());
-		map.sync(minimap);
 	    } else if (originalLayer instanceof L.Marker) {
 		minimap.setView(cl.getLatLng(), 16);
 	    } else {    
@@ -186,6 +185,7 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 		zoom = zoom - 2;
 	    	minimap.setView(bounds.getCenter(), zoom);
 	    }
+	    map.sync(minimap);
         });
 
         return minimap;
