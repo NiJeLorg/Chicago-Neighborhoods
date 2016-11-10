@@ -185,7 +185,6 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 		zoom = zoom - 2;
 	    	minimap.setView(bounds.getCenter(), zoom);
 	    }
-	    map.sync(minimap);
         });
 
         return minimap;
