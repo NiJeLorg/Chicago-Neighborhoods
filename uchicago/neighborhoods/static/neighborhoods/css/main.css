@@ -221,6 +221,9 @@ a:focus {
   height: 300px;
   border: 1px solid #ccc;
 }
+.leaflet-control-layers-expanded {
+    max-width: 200px;
+}
 @media (min-width: 767px) {
   .content-section {
     padding: 100px 15px;
@@ -228,7 +231,11 @@ a:focus {
   .mapContainer {
     height: 75vh;
   }
+  .leaflet-control-layers-expanded {
+    max-width: 150px;
+  }
 }
+
 .grey {
   background-color: #ddd;
 }

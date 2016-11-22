@@ -88,6 +88,14 @@ class ChicagoNeighborhoods(Page):
 		('video', EmbedBlock()),
 		('document', DocumentChooserBlock()),
 	])
+	final_project = StreamField([
+		('draw', DrawMapBlock()),
+		('heading', blocks.CharBlock(classname="heading")),
+		('paragraph', blocks.RichTextBlock()),
+		('image', ImageChooserBlock()),
+		('video', EmbedBlock()),
+		('document', DocumentChooserBlock()),
+	])
 
 	# Search index configuraiton
 	search_fields = Page.search_fields + [
@@ -97,6 +105,7 @@ class ChicagoNeighborhoods(Page):
 		index.SearchField('public_space'),
 		index.SearchField('amenities'),
 		index.SearchField('connections'),
+		index.SearchField('final_project'),
 		index.FilterField('date'),
 	]
 
@@ -110,6 +119,7 @@ class ChicagoNeighborhoods(Page):
 		StreamFieldPanel('public_space'),
 		StreamFieldPanel('amenities'),
 		StreamFieldPanel('connections'),
+		StreamFieldPanel('final_project'),
 		FieldPanel('date'),
 	]
 
@@ -165,6 +175,14 @@ class UrbanDesign(Page):
 		('document', DocumentChooserBlock()),
 		('draw', DrawMapBlock()),
 	])
+	final_project = StreamField([
+		('heading', blocks.CharBlock(classname="heading")),
+		('paragraph', blocks.RichTextBlock()),
+		('image', ImageChooserBlock()),
+		('video', EmbedBlock()),
+		('document', DocumentChooserBlock()),
+		('draw', DrawMapBlock()),
+	])
 
 	# Search index configuraiton
 	search_fields = Page.search_fields + [
@@ -173,6 +191,7 @@ class UrbanDesign(Page):
 		index.SearchField('transects'),
 		index.SearchField('diversity'),
 		index.SearchField('civic_art'),
+		index.SearchField('final_project'),
 		index.FilterField('date'),
 	]
 
@@ -184,6 +203,7 @@ class UrbanDesign(Page):
 		StreamFieldPanel('transects'),
 		StreamFieldPanel('diversity'),
 		StreamFieldPanel('civic_art'),
+		StreamFieldPanel('final_project'),
 		FieldPanel('date'),
 	]
 

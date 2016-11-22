@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block head_js_block %}
-<script type="text/javascript" src="{% static 'neighborhoods/vendor/js/L.Control.Layers.Minimap.js' %}"></script>
+<!-- <script type="text/javascript" src="{% static 'neighborhoods/vendor/js/L.Control.Layers.Minimap.js' %}"></script> -->
 <script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
 {% endblock %}
 	
@@ -49,6 +49,9 @@
                 </li>
                 <li>
                     <a class="page-scroll" href="#civic_art">Civic Art</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#final_project">Final Project</a>
                 </li>
             </ul>
         </div>
@@ -117,9 +120,20 @@
       </div>
   </section>
 
+  <section id="final_project" class="content-section grey">
+    <div class="container">
+      <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h1 class="text-center">Final Project</h1>
+            {% include_block page.final_project %}
+          </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
-      <div class="content-section text-center grey">
+      <div class="content-section text-center">
         <div class="container">
           <div class="row">
             <p><a href="/">Hood Mapping</a> is a project of <a href="http://urbanism.uchicago.edu/">Urbanism at the University of Chicago</a></p>

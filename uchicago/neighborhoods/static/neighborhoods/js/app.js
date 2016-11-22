@@ -98,12 +98,14 @@ app.createMap = function (mapId, drawnNeighborhood) {
             collapsed = false;
         }
         
-        var control = L.control.layers.minimap(app.baseMaps[mapId], app.overlayMaps[mapId], {
-            overlayBackgroundLayer: app.map[mapId].tiles,
-            collapsed: collapsed,
-        }).addTo(app.map[mapId]);
+        // var control = L.control.layers.minimap(app.baseMaps[mapId], app.overlayMaps[mapId], {
+        //     overlayBackgroundLayer: app.map[mapId].tiles,
+        //     collapsed: collapsed,
+        // }).addTo(app.map[mapId]);
         
-        console.log(control);
+        // console.log(control);
+
+        L.control.layers(app.baseMaps[mapId], app.overlayMaps[mapId], {collapsed: false}).addTo(app.map[mapId]);
 
         var bounds = app.map[mapId].GEOJSON.getBounds();
         app.map[mapId].fitBounds(bounds);
