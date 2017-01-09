@@ -9,15 +9,15 @@ app.init = function () {
     app.createListeners();
 }
 
-app.collapseNavbar = function () {
-    if ($(".navbar").offset().top > 30) {
-        $(".navbar-fixed-top").addClass("top-nav-collapse");
-        $(".intro").addClass("top-nav-collapse");
-    } else {
-        $(".navbar-fixed-top").removeClass("top-nav-collapse");
-        $(".intro").removeClass("top-nav-collapse");
-    }    
-}
+// app.collapseNavbar = function () {
+//     if ($(".navbar").offset().top > 30) {
+//         $(".navbar-fixed-top").addClass("top-nav-collapse");
+//         $(".intro").addClass("top-nav-collapse");
+//     } else {
+//         $(".navbar-fixed-top").removeClass("top-nav-collapse");
+//         $(".intro").removeClass("top-nav-collapse");
+//     }
+// }
 
 
 app.createListeners = function () {
@@ -83,7 +83,7 @@ app.createMap = function (mapId, drawnNeighborhood) {
                             app.overlayMaps[mapId]['Layer ' + app.layerCounter[mapId]] = layer;
                             layer.bindPopup('Layer ' + app.layerCounter[mapId]);
                             // add layer
-                            layer.addTo(app.map[mapId]);    
+                            layer.addTo(app.map[mapId]);
                         }
                         app.layerCounter[mapId]++;
                     }
@@ -97,19 +97,19 @@ app.createMap = function (mapId, drawnNeighborhood) {
         } else {
             collapsed = false;
         }
-        
+
         // var control = L.control.layers.minimap(app.baseMaps[mapId], app.overlayMaps[mapId], {
         //     overlayBackgroundLayer: app.map[mapId].tiles,
         //     collapsed: collapsed,
         // }).addTo(app.map[mapId]);
-        
+
         // console.log(control);
 
         L.control.layers(app.baseMaps[mapId], app.overlayMaps[mapId], {collapsed: false}).addTo(app.map[mapId]);
 
         var bounds = app.map[mapId].GEOJSON.getBounds();
         app.map[mapId].fitBounds(bounds);
-   
+
     }
 
 }
