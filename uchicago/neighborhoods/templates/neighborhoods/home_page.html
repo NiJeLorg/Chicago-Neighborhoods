@@ -32,40 +32,6 @@
     <!-- /.navbar-collapse -->
     <!-- /.container -->
 </nav>
-<!-- Intro Header -->
-<header class="intro">
-    <div class="intro-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h1 class="brand-heading">{{ page.title }}<br /></h1>
-                    <div class="clearfix"></div>
-                    <a href="#introduction" class="btn btn-circle page-scroll">
-                        <i class="fa fa-angle-double-down animated"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Map Drawing Section -->
-<section id="introduction" class="container content-section">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center"></h1> {{ page.body|richtext }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <h3>Check out more!</h3>
-            <ul>
-                {% for page in self.get_children.specific.live %}
-                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-</section>
 <div class="modal fade" id="welcomeModal" tabindex="-1" role='dialog' aria-labelledby='welcomeModalLabel'>
     <div class="vertical-alignment-helper">
         <div class="modal-dialog vertical-align-center" role='document'>
@@ -85,6 +51,20 @@
         </div>
     </div>
 </div>
+<main>
+    <div class="center-vertically">
+        <div class="cards-holder">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1 card">
+                </div>
+                <div class="col-md-3 col-md-offset-1 card">
+                </div>
+                <div class="col-md-3 col-md-offset-1 card">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 <!-- Footer -->
 <footer>
     <div class="content-section grey text-center">
@@ -103,10 +83,10 @@ window.onload = function() {
     var background_image = '{{ background_image.url }}';
     $('.intro').css('opacity', '1');
     app.init();
-    $(document).ready(function() {
-        console.log('here');
-        $('#welcomeModal').modal('show');
-    });
+    // $(document).ready(function() {
+    //     console.log('here');
+    //     $('#welcomeModal').modal('show');
+    // });
 
 };
 </script>
