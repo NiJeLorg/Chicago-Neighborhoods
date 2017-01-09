@@ -1,6 +1,5 @@
 {% extends 'neighborhoods/base.html' %} {% load staticfiles %} {% load wagtailcore_tags %} {% load wagtailimages_tags %} {% block title %}{{ page.title }}{% endblock %} {% block css_block %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}"> {% endblock %} {% block head_js_block %}
 <script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
 {% endblock %} {% block body_block %}
@@ -65,6 +64,23 @@
         </div>
     </div>
 </main>
+<!-- Intro Header -->
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="brand-heading">{{ page.title }}<br /></h1>
+                    <div class="clearfix"></div>
+                    <a href="#introduction" class="btn btn-circle page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Map Drawing Section -->
 <!-- Footer -->
 <footer>
     <div class="content-section grey text-center">
@@ -82,12 +98,10 @@
 window.onload = function() {
     var background_image = '{{ background_image.url }}';
     $('.intro').css('opacity', '1');
+    $(document).ready(function() {
+        $('#welcomeModal').modal('show');
+    });
     app.init();
-    // $(document).ready(function() {
-    //     console.log('here');
-    //     $('#welcomeModal').modal('show');
-    // });
-
 };
 </script>
 {% endblock %}
