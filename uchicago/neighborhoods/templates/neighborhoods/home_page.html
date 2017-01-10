@@ -31,7 +31,7 @@
     <!-- /.navbar-collapse -->
     <!-- /.container -->
 </nav>
-<div class="modal fade" id="welcomeModal" tabindex="-1" role='dialog' aria-labelledby='welcomeModalLabel'>
+<!-- <div class="modal fade" id="welcomeModal" tabindex="-1" role='dialog' aria-labelledby='welcomeModalLabel'>
     <div class="vertical-alignment-helper">
         <div class="modal-dialog vertical-align-center" role='document'>
             <div class="modal-content">
@@ -49,17 +49,36 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <main>
     <div class="center-vertically">
         <div class="cards-holder">
             <div class="row">
+                {% for page in self.get_children.specific.live %}
                 <div class="col-md-3 col-md-offset-1 card">
+                    {% image page.introductory_image original as background_image %} {% if background_image.url %}
+                    <div class="card-backgroundImage" id='card-backgroundImage'></div>
+                    <div class="card-backgroundImageOverlayLayer" id='card-backgroundImageOverlayLayer'></div>
+                    <script type="text/javascript">
+                    $('#card-backgroundImage').css('background-image', 'url({{background_image.url}})')
+                    </script>
+                    {% endif %}
+                    <div class="card-information">
+                        <p class="card-introductoryTitle">{{page.title}}</p>
+                        {% if page.neighborhood_name %}
+                        <p class="card-neighborhoodName">{{page.neighborhood_name}}</p>
+                        {% endif %}
+                        <p class="card-introductory-text">{{page.introductory_text|truncatechars:60}}</p>
+                    </div>
+                    <div class="card-icon">
+                        <div class="card-icon-holder">
+                            <a href="{{page.url}}">
+                                <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 col-md-offset-1 card">
-                </div>
-                <div class="col-md-3 col-md-offset-1 card">
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -96,7 +115,6 @@
 {% endblock %} {% block modal_block %} {% endblock %} {% block js_block %}
 <script type="text/javascript">
 window.onload = function() {
-    var background_image = '{{ background_image.url }}';
     $('.intro').css('opacity', '1');
     $(document).ready(function() {
         $('#welcomeModal').modal('show');

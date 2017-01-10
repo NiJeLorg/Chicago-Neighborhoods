@@ -110,6 +110,58 @@ main .card {
     border-radius: 7px;
     box-shadow: 2px 4px 6px rgba(150, 150, 150, 50);
     margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .card-backgroundImage {
+    height: 60%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 10px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.card .card-backgroundImage:hover {
+
+    opacity: 1;
+}
+
+.card .card-information {
+    flex: 1 0 auto;
+}
+
+.card .card-introductoryTitle {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.card .card-neighborhoodName {
+    text-transform: uppercase;
+    color: grey;
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+.card-icon .card-icon-holder {
+    text-align: right;
+}
+
+.card-icon-holder i {
+    color: #230C33;
+    cursor: pointer;
+}
+
+.card-icon-holder i:hover {
+    color: #DB5461;
+}
+
+.card .backgroundImageOverlayLayer {
+    position: relative;
+    height: 60%;
 }
 
 body footer {
