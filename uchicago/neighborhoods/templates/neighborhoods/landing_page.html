@@ -11,34 +11,32 @@
     <div class="urban-design-row nav-row">
         <a href="/urban-design-chicago/">URBAN DESIGN</a>
     </div>
+    <div class="modal fade" id="welcomeModal" tabindex="-1" role='dialog' aria-labelledby='welcomeModalLabel'>
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center" role='document'>
+                <div class="modal-content">
+                    <div class="close-modal">
+                        <div class="close-modal-icon">
+                            <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                        </div>
+                    </div>
+                    <div class="modal-header">
+                        <h4 class="welcomeModal-title">WELCOME TO HOODMAPPING.ORG</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Neighborhoods are unnecessarily vague. This project seeks to “ground” them by locating, mapping and then naming them — wherever they might exist. It builds on the excellent work being done in the area of crowd-sourced neighborhood mapping, focusing especially on making them “real” by proposing names, boundaries, centers, and a means of engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %} {% block modal_block %} {% endblock %} {% block js_block %}
 <script type="text/javascript">
 window.onload = function() {
     $('.intro').css('opacity', '1');
-    $(document).ready(function() {
-        $('#welcomeModal').modal('show');
-    });
+    // $('#welcomeModal').modal('show');
     app.init();
 };
 </script>
 {% endblock %}
-<!-- <div class="modal fade" id="welcomeModal" tabindex="-1" role='dialog' aria-labelledby='welcomeModalLabel'>
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center" role='document'>
-            <div class="modal-content">
-                <div class="close-modal">
-                    <div class="close-modal-icon">
-                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
-                    </div>
-                </div>
-                <div class="modal-header">
-                    <h4>WELCOME TO HOODMAPPING.ORG</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Neighborhoods are unnecessarily vague. This project seeks to “ground” them by locating, mapping and then naming them — wherever they might exist. It builds on the excellent work being done in the area of crowd-sourced neighborhood mapping, focusing especially on making them “real” by proposing names, boundaries, centers, and a means of engagement.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

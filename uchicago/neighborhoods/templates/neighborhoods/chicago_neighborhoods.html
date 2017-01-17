@@ -7,33 +7,195 @@
 {% endblock %} {% block body_block %}
 <div class="page-details">
     <div class="page-details-title">
-        <h2>Name of Project</h2>
+        <div class="page-title-header">
+            <h2> {{ page.neighborhood_name }} </h2>
+        </div>
     </div>
     <div class="page-details-cards">
         <div class="row">
-            <div class="col-md-6 nav-card ">
-                <p>Yoo</p>
+            <div class="col-md-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#boundsModal'>Bounds</p>
             </div>
-            <div class="col-md-6 nav-card">
-                <p>Yoo</p>
+            <div class="col-md-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#socialMixModal'>Social Mix</p>
             </div>
-            <div class="col-md-6 nav-card">
-                <p>Yoo</p>
+            <div class="col-md-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#publicSpaceModal'>Public Space</p>
             </div>
-            <div class="col-md-6 nav-card">
-                <p>Yoo</p>
+            <div class="col-md-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#amenitiesModal'>Amenities</p>
             </div>
-            <div class="col-md-6 nav-card">
-                <p>Yoo</p>
+            <div class="col-md-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#connectionsModal'>Connections</p>
             </div>
-            <div class="col-md-6 nav-card">
-                <p>Yoo</p>
+            <div class="col-md-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#finalProjectModal'>Final Project</p>
             </div>
         </div>
     </div>
 </div>
+<div class="modal fade neighborhood-component" id="boundsModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Neighborhood Bounds</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="bounds" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% include_block page.draw_neighborhood %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="socialMixModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Social Mix</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Content Section -->
+                    <section id="social_mix" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% include_block page.social_mix %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="publicSpaceModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Public Space</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="public_space" class="content-section">
+                        <div>
+                            <div class="row">
+                                <div>
+                                    {% include_block page.public_space %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="amenitiesModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Amenities</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="amenities" class="content-section grey">
+                        <div>
+                            <div class="row">
+                                <div ">
+                                    {% include_block page.amenities %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component " id="connectionsModal " tabindex="-1 " role='dialog' aria-labelledby='connectionsModalLabel'>
+    <div class="vertical-alignment-helper ">
+        <div class="modal-dialog vertical-align-center " role='document'>
+            <div class="modal-content ">
+                <div class="close-modal ">
+                    <div class="close-modal-icon ">
+                        <i class="fa fa-times-circle fa-3x " aria-hidden="true " data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header ">
+                    <h4>Connections</h4>
+                </div>
+                <div class="modal-body ">
+                    <section id="amenities " class="content-section grey ">
+                        <div>
+                            <div class="row ">
+                                <div ">
+                                    {% include_block page.amenities %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="finalProjectModal" tabindex="-1" role='dialog' aria-labelledby='finalProjectModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Final Project</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="amenities" class="content-section grey">
+                        <div>
+                            <div class="row">
+                                <div ">
+                                    {% include_block page.amenities %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %} {% block modal_block %} {% endblock %} {% block js_block %}
-<script type="text/javascript">
+<script type="text/javascript ">
 { % image page.introductory_image original as background_image %
 } { %
     if background_image.url %
@@ -43,6 +205,7 @@ window.onload = function() {
     $('.intro').css('background-image', 'url(' + background_image + ')');
     $('.intro').css('opacity', '1');
     app.init();
+    $('#boundsModal').modal('show');
 }; { %
     else %
 }

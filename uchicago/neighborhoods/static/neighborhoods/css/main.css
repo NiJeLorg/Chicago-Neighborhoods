@@ -14,6 +14,11 @@ body {
 
 .row {
     margin: 0px;
+    margin-top: 60px;
+}
+
+.nav {
+    display: flex;
 }
 
 .page-content {
@@ -43,7 +48,20 @@ body {
 }
 
 .modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.vertical-alignment-helper .modal-dialog {
+    width: 50%;
+    top: 90px;
+}
+
+.modal .vertical-alignment-helper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -96,13 +114,19 @@ body {
     font-weight: lighter;
 }
 
+.modal-body section img {
+    max-width: 100%;
+    height: 100%;
+    margin: 3% 0;
+}
+
 main {
     flex-basis: 90%;
+    overflow-y: scroll;
 }
 
 main .cards-holder {
     width: 75%;
-    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -114,14 +138,22 @@ main .card {
     background: white;
     border-radius: 7px;
     box-shadow: 2px 4px 6px rgba(150, 150, 150, 50);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     padding: 15px;
     display: flex;
     flex-direction: column;
+    width: 24%;
+    margin-left: 4.66%;
+    margin-right: 4.66%;
+}
+
+.card .image-link {
+    height: 60%;
+    margin-bottom: 20px;
 }
 
 .card .card-backgroundImage {
-    height: 60%;
+    height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -196,6 +228,7 @@ footer a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    cursor: pointer;
 }
 
 .nav-row a {
@@ -203,6 +236,10 @@ footer a {
     font-weight: bold;
     text-decoration: none;
     color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .landing-page .chicago-neighborhood-row {
@@ -230,7 +267,12 @@ footer a {
     padding-top: 3%;
 }
 
-.page-details-title h2 {
+.page-title-header {
+    padding-bottom: 2%;
+    border-bottom: 8px solid #fff;
+}
+
+.page-title-header h2 {
     margin: 0;
     font-size: 88px;
     font-weight: bold;
@@ -260,6 +302,52 @@ footer a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.nav-card p {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-property: transform;
+    transition-property: transform
+}
+
+.hvr-grow:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1)
+}
+
+.hvr-icon-wobble-horizontal {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    padding-right: 2.2em;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s
+}
+
+.hvr-icon-wobble-horizontal:hover {
+    -webkit-animation-name: hvr-icon-wobble-horizontal;
+    animation-name: hvr-icon-wobble-horizontal;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1
 }
 
 // /*!

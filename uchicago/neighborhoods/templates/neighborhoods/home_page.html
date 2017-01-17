@@ -7,12 +7,14 @@
 <div class="cards-holder">
     <div class="row">
         {% for page in self.get_children.specific.live %}
-        <div class="col-md-3 col-md-offset-1 card">
+        <div class="col-md-4 card">
             {% image page.introductory_image original as background_image %} {% if background_image.url %}
-            <div class="card-backgroundImage" id='card-backgroundImage'></div>
+            <a href="{{page.url}}" class="image-link">
+                <div class="card-backgroundImage" id='{{page.id}}'></div>
+            </a>
             <div class="card-backgroundImageOverlayLayer" id='card-backgroundImageOverlayLayer'></div>
             <script type="text/javascript">
-            $('#card-backgroundImage').css('background-image', 'url({{background_image.url}})')
+            $('#{{page.id}}').css('background-image', 'url({{background_image.url}})')
             </script>
             {% endif %}
             <div class="card-information">
@@ -25,7 +27,7 @@
             <div class="card-icon">
                 <div class="card-icon-holder">
                     <a href="{{page.url}}">
-                        <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
+                        <i class="fa fa-arrow-circle-right fa-3x" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -38,7 +40,7 @@
 window.onload = function() {
     $('.intro').css('opacity', '1');
     $(document).ready(function() {
-        $('#welcomeModal').modal('show');
+        // $('#welcomeModal').modal('show');
     });
     app.init();
 };
