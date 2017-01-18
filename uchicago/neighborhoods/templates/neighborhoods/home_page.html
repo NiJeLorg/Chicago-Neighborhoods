@@ -7,7 +7,7 @@
 <div class="cards-holder">
     <div class="row">
         {% for page in self.get_children.specific.live %}
-        <div class="col-md-4 card">
+        <div class="col-md-4 card col-sm-6">
             {% image page.introductory_image original as background_image %} {% if background_image.url %}
             <a href="{{page.url}}" class="image-link">
                 <div class="card-backgroundImage" id='{{page.id}}'></div>
