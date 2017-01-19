@@ -26,7 +26,7 @@
                 <p data-toggle='modal' data-target='#amenitiesModal'>Amenities</p>
             </div>
             <div class="col-md-6 col-sm-6 nav-card hvr-grow">
-                <p data-toggle='modal' data-target='#connectionsModal'>Connections</p>
+                <p data-toggle='modal' data-target='#finalProjectModal1'>Connections</p>
             </div>
             <div class="col-md-6 col-sm-6 nav-card hvr-grow">
                 <p data-toggle='modal' data-target='#finalProjectModal'>Final Project</p>
@@ -139,24 +139,24 @@
         </div>
     </div>
 </div>
-<div class="modal fade neighborhood-component " id="connectionsModal " tabindex="-1 " role='dialog' aria-labelledby='boundsModalLabel'>
-    <div class="vertical-alignment-helper ">
-        <div class="modal-dialog vertical-align-center " role='document'>
-            <div class="modal-content ">
-                <div class="close-modal ">
-                    <div class="close-modal-icon ">
-                        <i class="fa fa-times-circle fa-3x " aria-hidden="true " data-dismiss='modal'></i>
+<div class="modal fade neighborhood-component" id="finalProjectModal1" tabindex="-1" role='dialog' aria-labelledby='finalProjectModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
                     </div>
                 </div>
-                <div class="modal-header ">
+                <div class="modal-header">
                     <h4>Connections</h4>
                 </div>
-                <div class="modal-body ">
-                    <section id="amenities " class="content-section grey ">
+                <div class="modal-body">
+                    <section id="amenities" class="content-section grey">
                         <div>
-                            <div class="row ">
+                            <div class="row">
                                 <div ">
-                                    {% include_block page.connections %}
+                                    {% include_block page.amenities %}
                                 </div>
                             </div>
                         </div>
