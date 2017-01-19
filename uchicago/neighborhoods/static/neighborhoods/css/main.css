@@ -221,10 +221,12 @@ body footer {
     color: #230C33;
     text-transform: uppercase;
     font-weight: bold;
+    font-weight: lighter;
 }
 
 footer a {
     color: #230C33;
+    font-weight: bold;
 }
 
 .landing-page {
