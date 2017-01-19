@@ -354,7 +354,19 @@ footer a {
     animation-iteration-count: 1
 }
 
+.dropdown-menu li {
+    margin: 15px 0;
+    font-size: 18px;
+}
+
 @media screen and (min-width: 320px) {
+    .dropdown-menu-toggle {
+        display: block;
+    }
+    .dropdown-menu {
+        left: initial;
+        right: 0;
+    }
     .nav-row a {
         font-size: 60px;
     }
@@ -383,9 +395,18 @@ footer a {
     .vertical-alignment-helper .modal-dialog {
         width: 90%;
     }
+    .navbar-collapse {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 768px) {
+    .dropdown-menu-toggle {
+        display: none;
+    }
+    .navbar-collapse {
+        display: block;
+    }
     .nav-row a {
         font-size: 80px;
     }
