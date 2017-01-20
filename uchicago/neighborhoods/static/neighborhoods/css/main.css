@@ -103,13 +103,13 @@ body {
 .modal .modal-header {
     padding: 0px;
     border-bottom: 0px;
-    margin: 30px 0;
+    margin: 20px 0;
     text-transform: uppercase;
 }
 
 .modal-content .modal-header h4 {
     text-align: center;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 600;
 }
 
@@ -126,6 +126,7 @@ body {
     font-family: 'Slabo 27px', serif;
     opacity: .8;
     color: #000;
+    font-size: 18px;
 }
 
 // .modal-body p {
@@ -140,7 +141,7 @@ body {
 
 .modal-body .block-heading {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .modal-body .block-image {
@@ -311,17 +312,23 @@ footer a {
 
 .page-details-cards {
     padding-bottom: 6%;
-    padding-top: 3%;
-    flex-direction: column;
+    flex-direction: row;
+    display: flex;
     justify-content: flex-end;
+    max-width: 35%;
+}
+
+.page-details-cards .row {
+    width: 75%;
 }
 
 .row .nav-card {
     padding: 0;
     width: 46%;
+    max-width: 180px;
     margin-left: 4%;
     margin-bottom: 4%;
-    height: 250px;
+    height: 180px;
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -330,7 +337,7 @@ footer a {
 }
 
 .nav-card p {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -376,8 +383,8 @@ footer a {
 }
 
 .dropdown-menu li {
-    margin: 15px 0;
-    font-size: 18px;
+    margin: 10px 0;
+    font-size: 14px;
 }
 
 @media screen and (min-width: 320px) {
@@ -398,20 +405,29 @@ footer a {
     }
     .page-details {
         flex-direction: column;
-        padding: 0 50px;
+        padding: 0 20px;
+    }
+    .page-details-cards .row {
+        width: 51%;
     }
     .page-details-title {
         margin-top: 6%;
         display: block;
     }
     .row .nav-card {
-        margin-right: 2%;
-        margin-left: 2%;
         width: 100%;
-        margin-bottom: 12%;
+        margin-bottom: 6%;
+        height: 250px;
+        max-width: 250px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
     .page-title-header h2 {
-        font-size: 52px;
+        font-size: 42px;
+    }
+    .page-details-cards {
+        max-width: 100%;
+        justify-content: center;
     }
     .vertical-alignment-helper .modal-dialog {
         width: 90%;
@@ -420,6 +436,7 @@ footer a {
         display: none;
     }
 }
+
 
 @media screen and (min-width: 768px) {
     .dropdown-menu-toggle {
@@ -441,12 +458,21 @@ footer a {
     }
     .row .nav-card {
         width: 46%;
+        height: 200px;
+        max-width: 200px;
+        margin-left: 2%;
+    }
+    .page-details-cards {
+        max-width: 100%;
+    }
+    .page-details-cards .row {
+        width: 100%;
     }
     .page-details-title {
         margin-top: 0;
     }
     .page-title-header h2 {
-        font-size: 72px;
+        font-size: 52px;
     }
 }
 
@@ -463,11 +489,14 @@ footer a {
         flex-direction: row;
         display: flex;
     }
+    .page-details-cards .row {
+        width: 90%;
+    }
     .page-details-title {
         display: flex;
     }
     .page-title-header h2 {
-        font-size: 66px;
+        font-size: 62px;
     }
     .vertical-alignment-helper .modal-dialog {
         width: 50%;
@@ -485,5 +514,12 @@ footer a {
         width: 27.33%;
         margin-left: 3%;
         margin-right: 3%;
+    }
+    .page-details {
+        padding: 0 30px;
+    }
+    .page-details-cards {
+        max-width: 35%;
+        justify-content: flex-end;
     }
 }
