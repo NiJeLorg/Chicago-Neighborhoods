@@ -1,8 +1,8 @@
 {% load staticfiles %}
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -10,42 +10,78 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="https://socialsciences.uchicago.edu/sites/all/themes/ssd/images/favicon.ico" type="image/vnd.microsoft.icon" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/vendor/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/vendor/css/leaflet.css' %}">  
-	{% block css_block %}
-	{% endblock %}
-
+    <link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/vendor/css/leaflet.css' %}"> {% block css_block %} {% endblock %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <!-- Loading jquery from CDN -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'neighborhoods/vendor/js/leaflet.js' %}"></script>
+    {% block head_js_block %} {% endblock %}
+</head>
 
-  {% block head_js_block %}
-  {% endblock %}
-		
-  </head>
-
-  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-	{% block body_block %}
-	{% endblock %}
-
-
-	{% block modal_block %}
-	{% endblock %}
-	
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div class="page-content">
+        <nav class="navbar-custom" role="navigation">
+            <div class="navbar-header">
+                <!--  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button> -->
+                <a class="navbar-brand" href="/">
+                    <i class="fa fa-building" aria-hidden="true"></i><span class="light">Hood Mapping</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a href="/chicago-neighborhoods/">Chicago Neighborhoods</a>
+                    </li>
+                    <li>
+                        <a href="/urban-design-chicago/">Urban Design: The Chicago Experience</a>
+                    </li>
+                </ul>
+            </div>
+            <dir class="dropdown-menu-toggle">
+                <div class="input-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/chicago-neighborhoods/">Chicago Neighborhoods</a></li>
+                        <li><a href="/urban-design-chicago/">Urban Design</a></li>
+                    </ul>
+                </div>
+            </dir>
+        </nav>
+        <main>
+            {% block body_block %} {% endblock %}
+        </main>
+        <footer>
+            <div class="content-section text-center">
+                <div class="container">
+                    <div>
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <p><a href="/">Hood Mapping</a> is a project of <a href="http://urbanism.uchicago.edu/">Urbanism at the University of Chicago</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- {% block modal_block %} {% endblock %} -->
     <!--  javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" src="{% static 'neighborhoods/vendor/js/bootstrap.min.js' %}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	{% block js_block %}
-	{% endblock %}		
-  </body>
+    <script type="text/javascript" src="{% static 'neighborhoods/vendor/js/bootstrap.min.js' %}"></script>
+    {% block js_block %} {% endblock %}
+</body>
+
 </html>

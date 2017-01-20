@@ -1,122 +1,45 @@
-{% extends 'neighborhoods/base.html' %}
-{% load staticfiles %}
-{% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
-
-{% block title %}{{ page.title }}{% endblock %}
-
-{% block css_block %}
+{% extends 'neighborhoods/base.html' %} {% load staticfiles %} {% load wagtailcore_tags %} {% load wagtailimages_tags %} {% block title %}{{ page.title }}{% endblock %} {% block css_block %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}">    
-{% endblock %}
-
-{% block head_js_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}"> {% endblock %} {% block head_js_block %}
 <script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
-{% endblock %}
-	
-
-{% block body_block %}
-
+{% endblock %} {% block body_block %}
 <!-- Navigation -->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="/">
-                <i class="fa fa-building" aria-hidden="true"></i><span class="light">Hood Mapping</span>
+<div class="cards-holder">
+    <div class="row">
+        {% for page in self.get_children.specific.live %}
+        <div class="col-md-4 card col-sm-6">
+            {% image page.introductory_image original as background_image %} {% if background_image.url %}
+            <a href="{{page.url}}" class="image-link">
+                <div class="card-backgroundImage" id='{{page.id}}'></div>
             </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li>
-                    <a href="/chicago-neighborhoods/">Chicago Neighborhoods</a>
-                </li>
-                <li>
-                    <a href="/urban-design-chicago/">Urban Design: The Chicago Experience</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-  
-  <!-- Intro Header -->
-  <header class="intro">
-      <div class="intro-body">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-8 col-md-offset-2">
-                      <h1 class="brand-heading">{{ page.title }}<br /></h1>
-                      <div class="clearfix"></div>
-                      <a href="#introduction" class="btn btn-circle page-scroll">
-                          <i class="fa fa-angle-double-down animated"></i>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </header>
-
-  <!-- Map Drawing Section -->
-  <section id="introduction" class="container content-section">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center"></h1>
-            {{ page.body|richtext }}
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h3>Check out more!</h3>
-            <ul>
-            {% for page in self.get_children.specific.live %}
-                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-            {% endfor %}
-            </ul>
-          </div>
-      </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-      <div class="content-section grey text-center">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-              <p><a href="/">Hood Mapping</a> is a project of <a href="http://urbanism.uchicago.edu/">Urbanism at the University of Chicago</a>.</p>
+            <div class="card-backgroundImageOverlayLayer" id='card-backgroundImageOverlayLayer'></div>
+            <script type="text/javascript">
+            $('#{{page.id}}').css('background-image', 'url({{background_image.url}})')
+            </script>
+            {% endif %}
+            <div class="card-information">
+                <p class="card-introductoryTitle">{{page.title}}</p>
+                {% if page.neighborhood_name %}
+                <p class="card-neighborhoodName">{{page.neighborhood_name}}</p>
+                {% endif %}
+                <p class="card-introductory-text">{{page.introductory_text|truncatechars:60}}</p>
             </div>
-          </div>
+            <div class="card-icon">
+                <div class="card-icon-holder">
+                    <a href="{{page.url}}">
+                        <i class="fa fa-arrow-circle-right fa-3x" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-  </footer>
-
-
-{% endblock %}
-
-
-{% block modal_block %}
-{% endblock %}
-
-{% block js_block %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} {% block modal_block %} {% endblock %} {% block js_block %}
 <script type="text/javascript">
-  window.onload = function() {
-    var background_image = '{{ background_image.url }}';
-    $('.intro').css('opacity', '1');
+window.onload = function() {
+    // $('#welcomeModal').modal('show');
     app.init();
-  };
+};
 </script>
 {% endblock %}
-
-
-	
-	
-

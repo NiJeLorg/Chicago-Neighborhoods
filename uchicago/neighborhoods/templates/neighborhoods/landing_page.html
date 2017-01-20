@@ -1,0 +1,42 @@
+{% extends 'neighborhoods/base.html' %} {% load staticfiles %} {% load wagtailcore_tags %} {% load wagtailimages_tags %} {% block title %}{{ page.title }}{% endblock %} {% block css_block %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}"> {% endblock %} {% block head_js_block %}
+<script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
+{% endblock %} {% block body_block %}
+<!-- Navigation -->
+<div class="landing-page">
+    <div class="chicago-neighborhood-row nav-row">
+        <a href="/chicago-neighborhoods/">CHICAGO NEIGHBORHOODS</a>
+    </div>
+    <div class="urban-design-row nav-row">
+        <a href="/urban-design-chicago/">URBAN DESIGN</a>
+    </div>
+    <div class="modal fade" id="welcomeModal" tabindex="-1" role='dialog' aria-labelledby='welcomeModalLabel'>
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center" role='document'>
+                <div class="modal-content">
+                    <div class="close-modal">
+                        <div class="close-modal-icon">
+                            <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                        </div>
+                    </div>
+                    <div class="modal-header">
+                        <h4 class="welcomeModal-title">WELCOME TO HOODMAPPING.ORG</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Neighborhoods are unnecessarily vague. This project seeks to “ground” them by locating, mapping and then naming them — wherever they might exist. It builds on the excellent work being done in the area of crowd-sourced neighborhood mapping, focusing especially on making them “real” by proposing names, boundaries, centers, and a means of engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block modal_block %} {% endblock %} {% block js_block %}
+<script type="text/javascript">
+window.onload = function() {
+    $('.intro').css('opacity', '1');
+    // $('#welcomeModal').modal('show');
+    app.init();
+};
+</script>
+{% endblock %}

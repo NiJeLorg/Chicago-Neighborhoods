@@ -23,6 +23,13 @@ class HomePage(Page):
 		FieldPanel('body', classname="full")
 	]
 
+class LandingPage(Page):
+  body = RichTextField(blank=True)
+
+  content_panels = Page.content_panels + [
+    FieldPanel('body', classname="full")
+  ]
+
 # model class for map drawing tools
 class DrawMapBlock(blocks.StructBlock):
 	idNum = models.AutoField(primary_key=False)

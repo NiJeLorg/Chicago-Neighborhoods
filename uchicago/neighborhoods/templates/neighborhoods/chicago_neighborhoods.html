@@ -1,194 +1,251 @@
-{% extends 'neighborhoods/base.html' %}
-{% load staticfiles %}
-{% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
-
-{% block title %}{{ page.title }}{% endblock %}
-
-{% block css_block %}
+{% extends 'neighborhoods/base.html' %} {% load staticfiles %} {% load wagtailcore_tags %} {% load wagtailimages_tags %} {% block title %}{{ page.title }}{% endblock %} {% block css_block %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/vendor/css/control.layers.minimap.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}">
-{% endblock %}
-
-{% block head_js_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}"> {% endblock %} {% block head_js_block %}
 <!-- <script type="text/javascript" src="{% static 'neighborhoods/vendor/js/L.Control.Layers.Minimap.js' %}"></script> -->
 <script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
-{% endblock %}
-	
-
-{% block body_block %}
-
-<!-- Navigation -->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="/">
-                <i class="fa fa-building" aria-hidden="true"></i><span class="light">Hood Mapping</span> {{ page.neighborhood_name }}
-            </a>
+{% endblock %} {% block body_block %}
+<div class="page-details">
+    <div class="page-details-title">
+        <div class="page-title-header">
+            <h2> {{ page.neighborhood_name }} </h2>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#bounds">Bounds</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#social_mix">Social Mix</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#public_space">Public Space</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#amenities">Amenities</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#connections">Connections</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#final_project">Final Project</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
-</nav>
-  
-  <!-- Intro Header -->
-  <header class="intro">
-      <div class="intro-body">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-8 col-md-offset-2">
-                      <h1 class="brand-heading">{{ page.neighborhood_name }}<br /></h1>
-                      <div class="clearfix"></div>
-                      <p class="intro-text"><br />{{ page.introductory_text }}</p>
-                      <div class="clearfix"></div>                       
-                      <a href="#bounds" class="btn btn-circle page-scroll">
-                          <i class="fa fa-angle-double-down animated"></i>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </header>
-
-  <!-- Map Drawing Section -->
-  <section id="bounds" class="container content-section">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Neighborhood Bounds</h1>
-            {% include_block page.draw_neighborhood %}
-          </div>
-      </div>
-  </section>
-
-  <!-- Content Section -->
-  <section id="social_mix" class="content-section grey">
-    <div class="container"> 
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Social Mix</h1>
-            {% include_block page.social_mix %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="public_space" class="content-section">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Public Space</h1>
-            {% include_block page.public_space %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="amenities" class="content-section grey">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Amenities</h1>
-            {% include_block page.amenities %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="connections" class="content-section">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Connections</h1>
-            {% include_block page.connections %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="final_project" class="content-section grey">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Final Project</h1>
-            {% include_block page.final_project %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-      <div class="content-section text-center">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-              <p><a href="/">Hood Mapping</a> is a project of <a href="http://urbanism.uchicago.edu/">Urbanism at the University of Chicago</a>.</p>
+    <div class="page-details-cards">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#boundsModal'>Bounds</p>
             </div>
-          </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#socialMixModal'>Social Mix</p>
+            </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#publicSpaceModal'>Public Space</p>
+            </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#amenitiesModal'>Amenities</p>
+            </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#connectionsModal'>Connections</p>
+            </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#finalProjectModal'>Final Project</p>
+            </div>
         </div>
-      </div>
-  </footer>
-
-
-{% endblock %}
-
-
-{% block modal_block %}
-{% endblock %}
-
-{% block js_block %}
-<script type="text/javascript">
-  {% image page.introductory_image original as background_image %}
-  {% if background_image.url %}
-    window.onload = function() {
-      var background_image = '{{ background_image.url }}';
-      $('.intro').css('background-image', 'url(' + background_image + ')');
-      $('.intro').css('opacity', '1');
-      app.init();
-    };
-  {% else %}
-    window.onload = function() {
-      var background_image = '{{ background_image.url }}';
-      $('.intro').css('opacity', '1');
-      app.init();
-    };
-  {% endif %}
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="boundsModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Neighborhood Bounds</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="bounds" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% for block in page.draw_neighborhood %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="socialMixModal" tabindex="-1" role='dialog' aria-labelledby='socialMixModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Social Mix</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Content Section -->
+                    <section id="social_mix" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% for block in page.social_mix %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
+                                <!-- {% include_block page.social_mix %} -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="publicSpaceModal" tabindex="-1" role='dialog' aria-labelledby='publicSpaceModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Public Space</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="public_space" class="content-section">
+                        <div>
+                            <div class="row">
+                                <div>
+                                    {% for block in page.public_space %} {% if block.block_type == 'image' %}
+                                    <section class="block-image">
+                                        {% image block.value max-1000x500 %}
+                                    </section>
+                                    {% else %}
+                                    <section class="block-{{ block.block_type }}">
+                                        {% include_block block %}
+                                    </section>
+                                    {% endif %} {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="amenitiesModal" tabindex="-1" role='dialog' aria-labelledby='amenitiesModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Amenities</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="amenities" class="content-section grey">
+                        <div>
+                            <div class="row">
+                                <div>
+                                    {% for block in page.amenities %} {% if block.block_type == 'image' %}
+                                    <section class="block-image">
+                                        {% image block.value max-1000x500 %}
+                                    </section>
+                                    {% else %}
+                                    <section class="block-{{ block.block_type }}">
+                                        {% include_block block %}
+                                    </section>
+                                    {% endif %} {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component " id="connectionsModal" tabindex="-1 " role='dialog' aria-labelledby='connectionsModalLabel'>
+    <div class="vertical-alignment-helper ">
+        <div class="modal-dialog vertical-align-center " role='document'>
+            <div class="modal-content ">
+                <div class="close-modal ">
+                    <div class="close-modal-icon ">
+                        <i class="fa fa-times-circle fa-3x " aria-hidden="true " data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header ">
+                    <h4>Connections</h4>
+                </div>
+                <div class="modal-body ">
+                    <section id="amenities " class="content-section grey ">
+                        <div>
+                            <div class="row ">
+                                <div>
+                                    {% for block in page.connections %} {% if block.block_type == 'image' %}
+                                    <section class="block-image">
+                                        {% image block.value max-1000x500 %}
+                                    </section>
+                                    {% else %}
+                                    <section class="block-{{ block.block_type }}">
+                                        {% include_block block %}
+                                    </section>
+                                    {% endif %} {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component " id="finalProjectModal" tabindex="-1 " role='dialog' aria-labelledby='finalProjectModalLabel'>
+    <div class="vertical-alignment-helper ">
+        <div class="modal-dialog vertical-align-center " role='document'>
+            <div class="modal-content ">
+                <div class="close-modal ">
+                    <div class="close-modal-icon ">
+                        <i class="fa fa-times-circle fa-3x " aria-hidden="true " data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header ">
+                    <h4>Final Project</h4>
+                </div>
+                <div class="modal-body ">
+                    <section id="amenities " class="content-section grey ">
+                        <div>
+                            <div class="row ">
+                                <div>
+                                    {% for block in page.final_project %} {% if block.block_type == 'image' %}
+                                    <section class="block-image">
+                                        {% image block.value max-1000x500 %}
+                                    </section>
+                                    {% else %}
+                                    <section class="block-{{ block.block_type }}">
+                                        {% include_block block %}
+                                    </section>
+                                    {% endif %} {% endfor %}
+                                </div>
+                            </div>
+                        </div>Ó
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block modal_block %} {% endblock %} {% block js_block %}
+<script type="text/javascript ">
+window.onload = function() {
+    app.init();
+};
 </script>
 {% endblock %}
-
-
-	
-	
-

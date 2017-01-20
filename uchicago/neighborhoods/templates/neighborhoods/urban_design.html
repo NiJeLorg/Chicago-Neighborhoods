@@ -1,174 +1,205 @@
-{% extends 'neighborhoods/base.html' %}
-{% load staticfiles %}
-{% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
-
-{% block title %}{{ page.title }}{% endblock %}
-
-{% block css_block %}
+{% extends 'neighborhoods/base.html' %} {% load staticfiles %} {% load wagtailcore_tags %} {% load wagtailimages_tags %} {% block title %}{{ page.title }}{% endblock %} {% block css_block %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/vendor/css/control.layers.minimap.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}">    
-{% endblock %}
-
-{% block head_js_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'neighborhoods/css/main.css' %}"> {% endblock %} {% block head_js_block %}
 <!-- <script type="text/javascript" src="{% static 'neighborhoods/vendor/js/L.Control.Layers.Minimap.js' %}"></script> -->
 <script type="text/javascript" src="{% static 'neighborhoods/js/app.js' %}"></script>
-{% endblock %}
-	
-
-{% block body_block %}
-
-<!-- Navigation -->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="/">
-                <i class="fa fa-building" aria-hidden="true"></i><span class="light">Hood Mapping</span> {{ page.title }}
-            </a>
+{% endblock %} {% block body_block %}
+<div class="page-details">
+    <div class="page-details-title">
+        <div class="page-title-header">
+            <h2> {{ page}} </h2>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#city_beautiful">City Beautiful</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#transects">Transects</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#diversity">Diversity</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#civic_art">Civic Art</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#final_project">Final Project</a>
-                </li>
-            </ul>
+    </div>
+    <div class="page-details-cards">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#cityBeautifulModal'>City Beautiful</p>
+            </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#transectsModal'>Transects</p>
+            </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#diversityModal'>Diversity</p>
+            </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#civicArtModal'>Civic Art</p>
+            </div>
+            <div class="col-md-6 col-sm-6 nav-card hvr-grow">
+                <p data-toggle='modal' data-target='#finalProjectModal'>Final Project</p>
+            </div>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
-</nav>
-  
-  <!-- Intro Header -->
-  <header class="intro">
-      <div class="intro-body">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-8 col-md-offset-2">
-                      <h1 class="brand-heading">{{ page.title }}<br /></h1>
-                      <div class="clearfix"></div>
-                      <p class="intro-text"><br />{{ page.introductory_text }}</p>
-                      <div class="clearfix"></div>                       
-                      <a href="#city_beautiful" class="btn btn-circle page-scroll">
-                          <i class="fa fa-angle-double-down animated"></i>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </header>
-
-  <!-- Content Section -->
-  <section id="city_beautiful" class="content-section grey">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">City Beautiful</h1>
-            {% include_block page.city_beautiful %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="transects" class="container content-section">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Transects</h1>
-            {% include_block page.transects %}
-          </div>
-      </div>
-  </section>
-
-  <section id="diversity" class="content-section grey">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Diversity</h1>
-            {% include_block page.diversity %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="civic_art" class="container content-section">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Civic Art</h1>
-            {% include_block page.civic_art %}
-          </div>
-      </div>
-  </section>
-
-  <section id="final_project" class="content-section grey">
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="text-center">Final Project</h1>
-            {% include_block page.final_project %}
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-      <div class="content-section text-center">
-        <div class="container">
-          <div class="row">
-            <p><a href="/">Hood Mapping</a> is a project of <a href="http://urbanism.uchicago.edu/">Urbanism at the University of Chicago</a></p>
-          </div>
+</div>
+<div class="modal fade neighborhood-component" id="cityBeautifulModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>City Beautiful</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="bounds" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% for block in page.city_beautiful %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
-      </div>
-  </footer>
-
-
-{% endblock %}
-
-
-{% block modal_block %}
-{% endblock %}
-
-{% block js_block %}
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="transectsModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Transects</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="bounds" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% for block in page.transects %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="diversityModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Diversity</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="bounds" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% for block in page.diversity %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="civicArtModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Civic Art</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="bounds" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% for block in page.civic_art %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="finalProjectModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center" role='document'>
+            <div class="modal-content">
+                <div class="close-modal">
+                    <div class="close-modal-icon">
+                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h4>Final Project</h4>
+                </div>
+                <div class="modal-body">
+                    <section id="bounds" class="content-section">
+                        <div class="row">
+                            <div>
+                                {% for block in page.final_project %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block modal_block %} {% endblock %} {% block js_block %}
 <script type="text/javascript">
-{% image page.introductory_image original as background_image %}
-{% if background_image.url %}
 window.onload = function() {
-  var background_image = '{{ background_image.url }}';
-  $('.intro').css('background-image', 'url(' + background_image + ')');
-  $('.intro').css('opacity', '1');
-  app.init();
-  //setTimeout(function(){ app.invalidateMinimaps() }, 5000);
+    app.init();
 };
-{% else %}
-window.onload = function() {
-  var background_image = '{{ background_image.url }}';
-  $('.intro').css('opacity', '1');
-  app.init();
-  //setTimeout(function(){ app.invalidateMinimaps() }, 5000);
-};
-{% endif %}
 </script>
 {% endblock %}
-
-
