@@ -15,7 +15,6 @@ body {
 
 .row {
     margin: 0px;
-    margin-top: 60px;
 }
 
 .nav {
@@ -288,8 +287,9 @@ footer a {
 .page-details {
     height: 100%;
     background-image: linear-gradient(-134deg, #552B8F 0%, #00C9C3 100%);
-    padding: 0 90px;
+    padding: 0 40px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     overflow-y: scroll;
 }
@@ -315,23 +315,21 @@ footer a {
 }
 
 .page-details-cards {
-    padding-bottom: 6%;
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
-    justify-content: flex-end;
-    max-width: 35%;
+    justify-content: center;
+    flex-basis: 40%;
 }
 
-.page-details-cards .row {
-    width: 75%;
+.page-details-cards .cards-row {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .row .nav-card {
     padding: 0;
-    width: 46%;
-    max-width: 180px;
-    margin-left: 4%;
-    margin-bottom: 4%;
+    width: 180px;
+    margin: 2%;
     height: 180px;
     background: #fff;
     display: flex;
@@ -392,6 +390,13 @@ footer a {
 }
 
 @media screen and (min-width: 320px) {
+    .page-details {
+        display: block;
+        padding: 20px;
+    }
+    .page-details-cards .cards-row {
+        display: block;
+    }
     .dropdown-menu-toggle {
         display: block;
     }
@@ -405,36 +410,21 @@ footer a {
     .nav-row a {
         font-size: 40px;
     }
+    .row .nav-card {
+        margin: 12% auto;
+    }
     main .card {
         width: 100%;
+        margin-top: 8%;
         margin-left: 0;
         margin-right: 0;
-    }
-    .page-details {
-        flex-direction: column;
-        padding: 0 20px;
-    }
-    .page-details-cards .row {
-        width: 51%;
     }
     .page-details-title {
         margin-top: 6%;
         display: block;
     }
-    .row .nav-card {
-        width: 100%;
-        margin-bottom: 6%;
-        height: 250px;
-        max-width: 250px;
-        margin-left: 0px;
-        margin-right: 0px;
-    }
     .page-title-header h2 {
         font-size: 42px;
-    }
-    .page-details-cards {
-        max-width: 100%;
-        justify-content: center;
     }
     .vertical-alignment-helper .modal-dialog {
         width: 90%;
@@ -445,6 +435,9 @@ footer a {
 }
 
 @media screen and (min-width: 768px) {
+    .page-details {
+        padding: 0 40px;
+    }
     .dropdown-menu-toggle {
         display: none;
     }
@@ -454,6 +447,9 @@ footer a {
     .nav-row a {
         font-size: 50px;
     }
+    .row .nav-card {
+        margin-bottom: 10%;
+    }
     main .cards-holder {
         width: 90%;
     }
@@ -461,18 +457,11 @@ footer a {
         width: 46%;
         margin-left: 2%;
         margin-right: 2%;
+        margin-top: 4%;
     }
-    .row .nav-card {
-        width: 46%;
-        height: 200px;
-        max-width: 200px;
-        margin-left: 2%;
-    }
-    .page-details-cards {
-        max-width: 100%;
-    }
-    .page-details-cards .row {
-        width: 100%;
+    .page-details-cards .cards-row {
+        display: inline-block;
+        margin-right: 6%;
     }
     .page-details-title {
         margin-top: 0;
@@ -488,18 +477,23 @@ footer a {
     }
     main .card {
         width: 28%;
-        margin-left: 2.66%;
-        margin-right: 2.66%;
+        margin: 2% 2.66%;
     }
     .nav-row a {
         font-size: 60px;
     }
+    .row .nav-card {
+        margin: 2%;
+    }
     .page-details {
-        flex-direction: row;
         display: flex;
     }
-    .page-details-cards .row {
-        width: 90%;
+    .page-details-cards .cards-row {
+        display: flex;
+        margin: 0;
+    }
+    .page-details {
+        flex-direction: row;
     }
     .page-details-title {
         display: flex;
@@ -521,14 +515,9 @@ footer a {
     }
     main .card {
         width: 27.33%;
-        margin-left: 3%;
-        margin-right: 3%;
+        margin: 3%;
     }
     .page-details {
         padding: 0 30px;
-    }
-    .page-details-cards {
-        max-width: 35%;
-        justify-content: flex-end;
     }
 }
