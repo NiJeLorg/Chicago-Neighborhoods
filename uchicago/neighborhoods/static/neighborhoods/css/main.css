@@ -342,6 +342,12 @@ footer a {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hvr-grow {
