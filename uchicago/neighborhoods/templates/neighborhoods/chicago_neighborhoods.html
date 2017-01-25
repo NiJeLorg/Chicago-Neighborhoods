@@ -252,6 +252,17 @@
 <script type="text/javascript ">
 window.onload = function() {
     app.init();
+    var modalOpen = false;
+    $('.modal').on('click', function() {
+        modalOpen = true;
+    });
+
+    $('body').on('click', function() {
+        if (modalOpen === true) {
+            $('.modal').modal('hide');
+            return;
+        }
+    });
 };
 </script>
 {% endblock %}
