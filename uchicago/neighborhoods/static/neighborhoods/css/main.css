@@ -19,12 +19,16 @@ body {
 
 .nav {
     display: flex;
+    display: -webkit-flex;
 }
 
 .page-content {
     display: flex;
+    display: -webkit-flex;
+    display: -webkit-flex;
     height: 100vh;
     flex-direction: column;
+    -webkit-flex-direction: column;
 }
 
 .navbar-toggle {
@@ -39,6 +43,7 @@ body {
     height: 60px;
     margin: 0;
     display: flex;
+    display: -webkit-flex;
     justify-content: space-between;
     align-items: center;
     font-family: 'Source Sans Pro', sans-serif;
@@ -70,6 +75,7 @@ body {
 
 .modal .vertical-alignment-helper {
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -145,11 +151,12 @@ body {
 
 .modal-body .block-image {
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
 }
 
 main {
-    flex-basis: 90%;
+    height: 90%;
     overflow-y: scroll;
 }
 
@@ -157,6 +164,7 @@ main .cards-holder {
     width: 75%;
     margin: 0 auto;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -169,6 +177,7 @@ main .card {
     margin-bottom: 40px;
     padding: 15px;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     width: 24%;
     margin-left: 4.66%;
@@ -234,6 +243,7 @@ body footer {
     width: 100%;
     height: 70px;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
     justify-content: center;
     font-size: 13px;
@@ -260,6 +270,7 @@ footer a {
     height: 50%;
     text-align: center;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
@@ -271,6 +282,7 @@ footer a {
     color: #fff;
     height: 100%;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -289,6 +301,7 @@ footer a {
     background-image: linear-gradient(-134deg, #552B8F 0%, #00C9C3 100%);
     padding: 0 40px;
     display: flex;
+    display: -webkit-flex;
     flex-direction: row;
     justify-content: space-between;
     overflow-y: scroll;
@@ -296,10 +309,11 @@ footer a {
 
 .page-details-title {
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     justify-content: flex-end;
     padding-bottom: 6%;
-    padding-top: 3%;
+    e padding-top: 3%;
 }
 
 .page-title-header {
@@ -317,12 +331,14 @@ footer a {
 .page-details-cards {
     flex-direction: column;
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
     flex-basis: 40%;
 }
 
 .page-details-cards .cards-row {
     display: flex;
+    display: -webkit-flex;
     justify-content: flex-end;
 }
 
@@ -333,6 +349,7 @@ footer a {
     height: 180px;
     background: #fff;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -345,6 +362,7 @@ footer a {
     width: 100%;
     height: 100%;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -493,9 +511,11 @@ footer a {
     }
     .page-details {
         display: flex;
+        display: -webkit-flex;
     }
     .page-details-cards .cards-row {
         display: flex;
+        display: -webkit-flex;
         margin: 0;
     }
     .page-details {
@@ -503,6 +523,7 @@ footer a {
     }
     .page-details-title {
         display: flex;
+        display: -webkit-flex;
     }
     .page-title-header h2 {
         font-size: 62px;

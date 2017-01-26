@@ -15,26 +15,26 @@
         <div class="row">
             <div class="cards-row">
                 <div class="nav-card hvr-grow">
-                    <p data-toggle='modal' data-target='#boundsModal'>Bounds</p>
+                    <p data-toggle='modal' data-target='#boundsModal' class="openModal">Bounds</p>
                 </div>
                 <div class="nav-card hvr-grow">
-                    <p data-toggle='modal' data-target='#socialMixModal'>Social Mix</p>
-                </div>
-            </div>
-            <div class="cards-row">
-                <div class="nav-card hvr-grow">
-                    <p data-toggle='modal' data-target='#publicSpaceModal'>Public Space</p>
-                </div>
-                <div class="nav-card hvr-grow">
-                    <p data-toggle='modal' data-target='#amenitiesModal'>Amenities</p>
+                    <p data-toggle='modal' data-target='#socialMixModal' class="openModal">Social Mix</p>
                 </div>
             </div>
             <div class="cards-row">
                 <div class="nav-card hvr-grow">
-                    <p data-toggle='modal' data-target='#connectionsModal'>Connections</p>
+                    <p data-toggle='modal' data-target='#publicSpaceModal' class="openModal">Public Space</p>
                 </div>
                 <div class="nav-card hvr-grow">
-                    <p data-toggle='modal' data-target='#finalProjectModal'>Final Project</p>
+                    <p data-toggle='modal' data-target='#amenitiesModal' class="openModal">Amenities</p>
+                </div>
+            </div>
+            <div class="cards-row">
+                <div class="nav-card hvr-grow">
+                    <p data-toggle='modal' data-target='#connectionsModal' class="openModal">Connections</p>
+                </div>
+                <div class="nav-card hvr-grow">
+                    <p data-toggle='modal' data-target='#finalProjectModal' class="openModal">Final Project</p>
                 </div>
             </div>
         </div>
@@ -253,16 +253,26 @@
 window.onload = function() {
     app.init();
     var modalOpen = false;
-    $('.modal').on('click', function() {
+    var continueShowingModal = false;
+    $('.openModal').on('click', function() {
         modalOpen = true;
     });
-
+    $('.modal-dialog').on('click', function() {
+        continueShowingModal = true;
+    });
     $('body').on('click', function() {
-        if (modalOpen === true) {
-            $('.modal').modal('hide');
+        console.log(modalOpen, 'modalOpen');
+        console.log(continueShowingModal, 'continue');
+        if (modalOpen === true && continueShowingModal === true) {
             return;
+        } else {
+            $('.modal').modal('hide');
+            modalOpen = false;
+            continueShowingModal = false;
         }
     });
+
+
 };
 </script>
 {% endblock %}
