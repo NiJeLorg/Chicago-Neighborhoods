@@ -15,59 +15,23 @@
         <div class="row">
             <div class="cards-row">
                 <div class="nav-card hvr-grow">
-                    <p data-toggle='modal' data-target='#boundsModal' class="openModal">Bounds</p>
-                </div>
-                <div class="nav-card hvr-grow">
                     <p data-toggle='modal' data-target='#socialMixModal' class="openModal">Social Mix</p>
                 </div>
-            </div>
-            <div class="cards-row">
                 <div class="nav-card hvr-grow">
                     <p data-toggle='modal' data-target='#publicSpaceModal' class="openModal">Public Space</p>
                 </div>
+            </div>
+            <div class="cards-row">
                 <div class="nav-card hvr-grow">
                     <p data-toggle='modal' data-target='#amenitiesModal' class="openModal">Amenities</p>
+                </div>
+                <div class="nav-card hvr-grow">
+                    <p data-toggle='modal' data-target='#connectionsModal' class="openModal">Connections</p>
                 </div>
             </div>
             <div class="cards-row">
                 <div class="nav-card hvr-grow">
-                    <p data-toggle='modal' data-target='#connectionsModal' class="openModal">Connections</p>
-                </div>
-                <div class="nav-card hvr-grow">
                     <p data-toggle='modal' data-target='#finalProjectModal' class="openModal">Final Project</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade neighborhood-component" id="boundsModal" tabindex="-1" role='dialog' aria-labelledby='boundsModalLabel'>
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center" role='document'>
-            <div class="modal-content">
-                <div class="close-modal">
-                    <div class="close-modal-icon">
-                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
-                    </div>
-                </div>
-                <div class="modal-header">
-                    <h4>Neighborhood Bounds</h4>
-                </div>
-                <div class="modal-body">
-                    <section id="bounds" class="content-section">
-                        <div class="row">
-                            <div>
-                                {% for block in page.draw_neighborhood %} {% if block.block_type == 'image' %}
-                                <section class="block-image">
-                                    {% image block.value max-1000x500 %}
-                                </section>
-                                {% else %}
-                                <section class="block-{{ block.block_type }}">
-                                    {% include_block block %}
-                                </section>
-                                {% endif %} {% endfor %}
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
         </div>
