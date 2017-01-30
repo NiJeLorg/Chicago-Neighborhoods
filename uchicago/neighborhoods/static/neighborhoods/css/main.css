@@ -474,6 +474,9 @@ footer a {
     .row .nav-card {
         margin-bottom: 10%;
     }
+    .final-project .nav-card {
+        width: 180px;
+    }
     main .cards-holder {
         width: 90%;
     }
@@ -506,8 +509,13 @@ footer a {
     .nav-row a {
         font-size: 60px;
     }
+    .final-project .nav-card {
+        width: 380px;
+        margin-left: 0;
+        margin-right: 0;
+    }
     .row .nav-card {
-        margin: 2%;
+        margin: 10px;
     }
     .page-details {
         display: flex;
