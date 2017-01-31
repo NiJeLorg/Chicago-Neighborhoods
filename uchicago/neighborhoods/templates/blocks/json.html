@@ -10,12 +10,15 @@
     // initilize map
     app.createMap(app.mapId, app.drawnNeighborhood);
 
-    // adding invalidateState 
+    // adding invalidateSize to refresh the map inside modal after un-hiding it
 	$('.modal').on('shown.bs.modal', function(){
 		setTimeout(function() {
 			for (var i = 1; i < app.mapCount; i++) {
 				var mapId = 'map_' + i;
 				app.map[mapId].invalidateSize();
+				//setting the bounds of the map after un-hiding it
+				var bounds = app.map[mapId].GEOJSON.getBounds();
+        		app.map[mapId].fitBounds(bounds);
 			}
 		}, 100);
 	});

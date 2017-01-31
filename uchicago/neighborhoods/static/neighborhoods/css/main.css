@@ -611,3 +611,8 @@ footer a {
     margin-bottom: 20px;
     border: 1px #ccc solid;
 }
+
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+    font-size: 12px;
+    line-height: 1;
+}
