@@ -11,6 +11,10 @@ body {
     width: 25%;
 }
 
+.modal {
+    // display: flex !important;
+}
+
 .hide-message {
     margin-top: 30px;
 }
@@ -85,10 +89,11 @@ body {
     overflow-y: scroll;
 }
 
-.vertical-alignment-helper .modal-dialog {
-    width: 50%;
+.modal .vertical-align-center {
     top: 90px;
+    margin: 0 auto;
 }
+
 
 .modal .vertical-alignment-helper {
     display: flex;
@@ -110,9 +115,6 @@ body {
     color: #230C33;
 }
 
-.modal .modal-dialog {
-    margin: 0;
-}
 
 .modal .modal-content {
     border: 0;

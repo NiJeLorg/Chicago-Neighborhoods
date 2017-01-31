@@ -38,23 +38,55 @@
     </div>
 </div>
 <div class="modal fade neighborhood-component" id="socialMixModal" tabindex="-1" role='dialog' aria-labelledby='socialMixModalLabel'>
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center" role='document'>
-            <div class="modal-content">
-                <div class="close-modal">
-                    <div class="close-modal-icon">
-                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+    <div class="modal-dialog vertical-align-center" role='document'>
+        <div class="modal-content">
+            <div class="close-modal">
+                <div class="close-modal-icon">
+                    <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
+                </div>
+            </div>
+            <div class="modal-header">
+                <h4>Social Mix</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Content Section -->
+                <section id="social_mix" class="content-section">
+                    <div class="row">
+                        <div>
+                            {% for block in page.social_mix %} {% if block.block_type == 'image' %}
+                            <section class="block-image">
+                                {% image block.value max-1000x500 %}
+                            </section>
+                            {% else %}
+                            <section class="block-{{ block.block_type }}">
+                                {% include_block block %}
+                            </section>
+                            {% endif %} {% endfor %}
+                            <!-- {% include_block page.social_mix %} -->
+                        </div>
                     </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade neighborhood-component" id="publicSpaceModal" tabindex="-1" role='dialog' aria-labelledby='publicSpaceModalLabel'>
+    <div class="modal-dialog vertical-align-center" role='document'>
+        <div class="modal-content">
+            <div class="close-modal">
+                <div class="close-modal-icon">
+                    <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
                 </div>
-                <div class="modal-header">
-                    <h4>Social Mix</h4>
-                </div>
-                <div class="modal-body">
-                    <!-- Content Section -->
-                    <section id="social_mix" class="content-section">
+            </div>
+            <div class="modal-header">
+                <h4>Public Space</h4>
+            </div>
+            <div class="modal-body">
+                <section id="public_space" class="content-section">
+                    <div>
                         <div class="row">
                             <div>
-                                {% for block in page.social_mix %} {% if block.block_type == 'image' %}
+                                {% for block in page.public_space %} {% if block.block_type == 'image' %}
                                 <section class="block-image">
                                     {% image block.value max-1000x500 %}
                                 </section>
@@ -63,151 +95,109 @@
                                     {% include_block block %}
                                 </section>
                                 {% endif %} {% endfor %}
-                                <!-- {% include_block page.social_mix %} -->
                             </div>
                         </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade neighborhood-component" id="publicSpaceModal" tabindex="-1" role='dialog' aria-labelledby='publicSpaceModalLabel'>
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center" role='document'>
-            <div class="modal-content">
-                <div class="close-modal">
-                    <div class="close-modal-icon">
-                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
                     </div>
-                </div>
-                <div class="modal-header">
-                    <h4>Public Space</h4>
-                </div>
-                <div class="modal-body">
-                    <section id="public_space" class="content-section">
-                        <div>
-                            <div class="row">
-                                <div>
-                                    {% for block in page.public_space %} {% if block.block_type == 'image' %}
-                                    <section class="block-image">
-                                        {% image block.value max-1000x500 %}
-                                    </section>
-                                    {% else %}
-                                    <section class="block-{{ block.block_type }}">
-                                        {% include_block block %}
-                                    </section>
-                                    {% endif %} {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+                </section>
             </div>
         </div>
     </div>
 </div>
 <div class="modal fade neighborhood-component" id="amenitiesModal" tabindex="-1" role='dialog' aria-labelledby='amenitiesModalLabel'>
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center" role='document'>
-            <div class="modal-content">
-                <div class="close-modal">
-                    <div class="close-modal-icon">
-                        <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
-                    </div>
+    <div class="modal-dialog vertical-align-center" role='document'>
+        <div class="modal-content">
+            <div class="close-modal">
+                <div class="close-modal-icon">
+                    <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal'></i>
                 </div>
-                <div class="modal-header">
-                    <h4>Amenities</h4>
-                </div>
-                <div class="modal-body">
-                    <section id="amenities" class="content-section grey">
-                        <div>
-                            <div class="row">
-                                <div>
-                                    {% for block in page.amenities %} {% if block.block_type == 'image' %}
-                                    <section class="block-image">
-                                        {% image block.value max-1000x500 %}
-                                    </section>
-                                    {% else %}
-                                    <section class="block-{{ block.block_type }}">
-                                        {% include_block block %}
-                                    </section>
-                                    {% endif %} {% endfor %}
-                                </div>
+            </div>
+            <div class="modal-header">
+                <h4>Amenities</h4>
+            </div>
+            <div class="modal-body">
+                <section id="amenities" class="content-section grey">
+                    <div>
+                        <div class="row">
+                            <div>
+                                {% for block in page.amenities %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
                             </div>
                         </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
 </div>
 <div class="modal fade neighborhood-component " id="connectionsModal" tabindex="-1 " role='dialog' aria-labelledby='connectionsModalLabel'>
-    <div class="vertical-alignment-helper ">
-        <div class="modal-dialog vertical-align-center " role='document'>
-            <div class="modal-content ">
-                <div class="close-modal ">
-                    <div class="close-modal-icon ">
-                        <i class="fa fa-times-circle fa-3x " aria-hidden="true " data-dismiss='modal'></i>
-                    </div>
+    <div class="modal-dialog vertical-align-center " role='document'>
+        <div class="modal-content ">
+            <div class="close-modal ">
+                <div class="close-modal-icon ">
+                    <i class="fa fa-times-circle fa-3x " aria-hidden="true " data-dismiss='modal'></i>
                 </div>
-                <div class="modal-header ">
-                    <h4>Connections</h4>
-                </div>
-                <div class="modal-body ">
-                    <section id="amenities " class="content-section grey ">
-                        <div>
-                            <div class="row ">
-                                <div>
-                                    {% for block in page.connections %} {% if block.block_type == 'image' %}
-                                    <section class="block-image">
-                                        {% image block.value max-1000x500 %}
-                                    </section>
-                                    {% else %}
-                                    <section class="block-{{ block.block_type }}">
-                                        {% include_block block %}
-                                    </section>
-                                    {% endif %} {% endfor %}
-                                </div>
+            </div>
+            <div class="modal-header ">
+                <h4>Connections</h4>
+            </div>
+            <div class="modal-body ">
+                <section id="amenities " class="content-section grey ">
+                    <div>
+                        <div class="row ">
+                            <div>
+                                {% for block in page.connections %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
                             </div>
                         </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
 </div>
 <div class="modal fade neighborhood-component " id="finalProjectModal" tabindex="-1 " role='dialog' aria-labelledby='finalProjectModalLabel'>
-    <div class="vertical-alignment-helper ">
-        <div class="modal-dialog vertical-align-center " role='document'>
-            <div class="modal-content ">
-                <div class="close-modal ">
-                    <div class="close-modal-icon ">
-                        <i class="fa fa-times-circle fa-3x " aria-hidden="true " data-dismiss='modal'></i>
-                    </div>
+    <div class="modal-dialog vertical-align-center " role='document'>
+        <div class="modal-content ">
+            <div class="close-modal ">
+                <div class="close-modal-icon ">
+                    <i class="fa fa-times-circle fa-3x " aria-hidden="true " data-dismiss='modal'></i>
                 </div>
-                <div class="modal-header ">
-                    <h4>Final Project</h4>
-                </div>
-                <div class="modal-body ">
-                    <section id="amenities " class="content-section grey ">
-                        <div>
-                            <div class="row ">
-                                <div>
-                                    {% for block in page.final_project %} {% if block.block_type == 'image' %}
-                                    <section class="block-image">
-                                        {% image block.value max-1000x500 %}
-                                    </section>
-                                    {% else %}
-                                    <section class="block-{{ block.block_type }}">
-                                        {% include_block block %}
-                                    </section>
-                                    {% endif %} {% endfor %}
-                                </div>
+            </div>
+            <div class="modal-header ">
+                <h4>Final Project</h4>
+            </div>
+            <div class="modal-body ">
+                <section id="amenities " class="content-section grey ">
+                    <div>
+                        <div class="row ">
+                            <div>
+                                {% for block in page.final_project %} {% if block.block_type == 'image' %}
+                                <section class="block-image">
+                                    {% image block.value max-1000x500 %}
+                                </section>
+                                {% else %}
+                                <section class="block-{{ block.block_type }}">
+                                    {% include_block block %}
+                                </section>
+                                {% endif %} {% endfor %}
                             </div>
-                        </div>Ó
-                    </section>
-                </div>
+                        </div>
+                    </div>Ó
+                </section>
             </div>
         </div>
     </div>
@@ -216,27 +206,6 @@
 <script type="text/javascript ">
 window.onload = function() {
     app.init();
-    var modalOpen = false;
-    var continueShowingModal = false;
-    $('.openModal').on('click', function() {
-        modalOpen = true;
-    });
-    $('.modal-dialog').on('click', function() {
-        continueShowingModal = true;
-    });
-    $('body').on('click', function() {
-        console.log(modalOpen, 'modalOpen');
-        console.log(continueShowingModal, 'continue');
-        if (modalOpen === true && continueShowingModal === true) {
-            return;
-        } else {
-            $('.modal').modal('hide');
-            modalOpen = false;
-            continueShowingModal = false;
-        }
-    });
-
-
 };
 </script>
 {% endblock %}
