@@ -19,17 +19,24 @@ $('.navbar-custom').click(function() {
 
 function app() {}
 
+
+
 app.init = function() {
+    localStorage.disableWelcomeWindowTemporarily = false;
     // set up listeners
     app.createListeners();
     console.log(localStorage.showWelcomeInfoModal, 'value');
-    if (localStorage.showWelcomeInfoModal === undefined || localStorage.showWelcomeInfoModal === true) {
+    if (localStorage.showWelcomeInfoModal === undefined && localStorage.disableWelcomeWindowTemporarily === 'false') {
+        $('#welcomeModal').css({
+            'display': 'flex',
+            'justify-content': 'center'
+        });
         $('#welcomeModal').modal('show');
-        localStorage.showWelcomeInfoModal = true;
-    } else if (localStorage.showWelcomeInfoModal === false) {
+    } else {
         $('.welcome-modal').modal({ show: false });
     }
 };
+
 
 // app.collapseNavbar = function () {
 //     if ($(".navbar").offset().top > 30) {
@@ -58,8 +65,16 @@ app.createListeners = function() {
         $(this).closest('.collapse').collapse('toggle');
     });
 
+    $('.hide-message input[type=checkbox]').change(function() {
+        if (this.checked) {
+            localStorage.showWelcomeInfoModal = false;
+        } else {
+            localStorage.showWelcomeInfoModal = true;
+        }
+    });
     $('#closeWelomeModal').click(function() {
-        localStorage.showWelcomeInfoModal = false;
+        localStorage.disableWelcomeWindowTemporarily = true;
+        localStorage.showWelcomeInfoModal = true;
     });
 };
 

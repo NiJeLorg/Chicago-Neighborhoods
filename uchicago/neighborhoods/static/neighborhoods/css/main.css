@@ -7,12 +7,22 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-#welcomeModal {
-    justify-content: center;
-}
+// #welcomeModal {
+//     display: flex;
+//     justify-content: center;
+// }
 
 #welcomeModal .modal-dialog {
     width: 25%;
+}
+
+.hide-message {
+    margin-top: 30px;
+}
+
+.hide-message span {
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .navbar-brand {
@@ -530,7 +540,7 @@ footer a {
 
 @media screen and (min-width: 1024px) {
     #welcomeModal .modal-dialog {
-        width: 20%;
+        width: 25%;
     }
     main .cards-holder {
         width: 90%;
