@@ -8,7 +8,17 @@
     console.log(app.mapId);
     $('#map9999').attr('id', app.mapId);
     // initilize map
-    app.createMap(app.mapId, app.drawnNeighborhood);    
+    app.createMap(app.mapId, app.drawnNeighborhood);
+
+    // adding invalidateState 
+	$('.modal').on('shown.bs.modal', function(){
+		setTimeout(function() {
+			for (var i = 1; i < app.mapCount; i++) {
+				var mapId = 'map_' + i;
+				app.map[mapId].invalidateSize();
+			}
+		}, 100);
+	});
     // increment for the next map
     app.mapCount++;  		
 </script>
