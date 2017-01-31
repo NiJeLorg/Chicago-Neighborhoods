@@ -498,6 +498,10 @@ footer a {
     #welcomeModal .modal-content .modal-body {
         font-size: 18px;
     }
+    #welcomeModal .modal-content {
+        padding: 20px;
+        padding-bottom: 30px;
+    }
     .page-details {
         padding: 0 40px;
     }
@@ -539,7 +543,7 @@ footer a {
 
 @media screen and (min-width: 1024px) {
     #welcomeModal .modal-dialog {
-        width: 25%;
+        width: 50%;
     }
     main .cards-holder {
         width: 90%;
@@ -584,6 +588,9 @@ footer a {
 }
 
 @media screen and (min-width: 1440px) {
+    #welcomeModal .modal-dialog {
+        width: 30%;
+    }
     .nav-row a {
         font-size: 80px;
     }
