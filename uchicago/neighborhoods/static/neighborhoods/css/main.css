@@ -7,10 +7,27 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+#welcomeModal .modal-dialog {
+    width: 25%;
+}
+
+.hide-message {
+    margin-top: 30px;
+}
+
+.hide-message span {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .navbar-brand {
     padding-left: 0px;
     text-transform: uppercase;
     font-size: 13px;
+}
+
+.navbar-right {
+    margin-right: 0;
 }
 
 .row {
@@ -414,6 +431,19 @@ footer a {
 }
 
 @media screen and (min-width: 320px) {
+    #welcomeModal .modal-dialog {
+        width: 90%;
+    }
+    #welcomeModal .modal-content {
+        padding: 10px;
+        padding-bottom: 20px;
+    }
+    #welcomeModal .modal-content .modal-body {
+        font-size: 14px;
+    }
+    #welcomeModal .fa-3x {
+        font-size: 2em;
+    }
     .page-details {
         display: block;
         padding: 20px;
@@ -459,6 +489,15 @@ footer a {
 }
 
 @media screen and (min-width: 768px) {
+    #welcomeModal .modal-dialog {
+        width: 70%;
+    }
+    #welcomeModal .fa-3x {
+        font-size: 3em;
+    }
+    #welcomeModal .modal-content .modal-body {
+        font-size: 18px;
+    }
     .page-details {
         padding: 0 40px;
     }
@@ -499,6 +538,9 @@ footer a {
 }
 
 @media screen and (min-width: 1024px) {
+    #welcomeModal .modal-dialog {
+        width: 25%;
+    }
     main .cards-holder {
         width: 90%;
     }
