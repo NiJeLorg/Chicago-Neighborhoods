@@ -55,14 +55,6 @@ class ChicagoNeighborhoods(Page):
 		on_delete=models.SET_NULL,
 		related_name='+'
 	)
-	draw_neighborhood = StreamField([
-		('draw', DrawMapBlock()),
-		('heading', blocks.CharBlock(classname="heading")),
-		('paragraph', blocks.RichTextBlock()),
-		('image', ImageChooserBlock()),
-		('video', EmbedBlock()),
-		('document', DocumentChooserBlock()),
-	],null=False,blank=False)
 	social_mix = StreamField([
 		('draw', DrawMapBlock()),
 		('heading', blocks.CharBlock(classname="heading")),
@@ -121,7 +113,6 @@ class ChicagoNeighborhoods(Page):
 		FieldPanel('neighborhood_name'),
 		FieldPanel('introductory_text'),
 		ImageChooserPanel('introductory_image'),
-		StreamFieldPanel('draw_neighborhood'),
 		StreamFieldPanel('social_mix'),
 		StreamFieldPanel('public_space'),
 		StreamFieldPanel('amenities'),
