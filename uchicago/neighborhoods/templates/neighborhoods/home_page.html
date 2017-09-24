@@ -35,7 +35,33 @@
         {% endfor %}
     </div>
 </div>
-{% endblock %} {% block modal_block %} {% endblock %} {% block js_block %}
+{% endblock %}
+
+{% block modal_block %} 
+<div class="modal fade welcome-modal" id="welcomeModal" tabindex="-1" role='dialog' aria-labelledby='welcomeModalLabel'>
+    <div class="modal-dialog" role='document'>
+        <div class="modal-content">
+            <div class="close-modal">
+                <div class="close-modal-icon" id="close-modal-button">
+                    <i class="fa fa-times-circle fa-3x" aria-hidden="true" data-dismiss='modal' id="closeWelomeModal"></i>
+                </div>
+            </div>
+            <div class="modal-header">
+                <h4 class="welcomeModal-title">WELCOME TO HOODMAPPING.ORG</h4>
+            </div>
+            <div class="modal-body">
+                <p>Students at the University of Chicago are creating websites analyzing the urbanism of Chicago. One class is focusing on neighborhoods, the other is focusing on the theory and practice of urban design.</p>
+            </div>
+            <div class="hide-message">
+                <input type="checkbox" name="hideMessage">
+                <span>Don't show this message again</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
+
+{% block js_block %}
 <script type="text/javascript">
 window.onload = function() {
     // $('#welcomeModal').modal('show');

@@ -26,6 +26,7 @@ app.init = function() {
     // set up listeners
     app.createListeners();
     console.log(localStorage.showWelcomeInfoModal, 'value');
+    
     if (localStorage.showWelcomeInfoModal === undefined && localStorage.disableWelcomeWindowTemporarily === 'false') {
         $('#welcomeModal').css({
             'display': 'flex',
