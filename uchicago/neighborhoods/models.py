@@ -55,6 +55,14 @@ class ChicagoNeighborhoods(Page):
 		on_delete=models.SET_NULL,
 		related_name='+'
 	)
+	overview = StreamField([
+		('draw', DrawMapBlock()),
+		('heading', blocks.CharBlock(classname="heading")),
+		('paragraph', blocks.RichTextBlock()),
+		('image', ImageChooserBlock()),
+		('video', EmbedBlock()),
+		('document', DocumentChooserBlock()),
+	], default='')
 	social_mix = StreamField([
 		('draw', DrawMapBlock()),
 		('heading', blocks.CharBlock(classname="heading")),
@@ -100,6 +108,7 @@ class ChicagoNeighborhoods(Page):
 	search_fields = Page.search_fields + [
 		index.SearchField('neighborhood_name'),
 		index.SearchField('introductory_text'),
+		index.SearchField('overview'),
 		index.SearchField('social_mix'),
 		index.SearchField('public_space'),
 		index.SearchField('amenities'),
@@ -113,6 +122,7 @@ class ChicagoNeighborhoods(Page):
 		FieldPanel('neighborhood_name'),
 		FieldPanel('introductory_text'),
 		ImageChooserPanel('introductory_image'),
+		StreamFieldPanel('overview'),
 		StreamFieldPanel('social_mix'),
 		StreamFieldPanel('public_space'),
 		StreamFieldPanel('amenities'),
