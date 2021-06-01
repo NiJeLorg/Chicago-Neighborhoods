@@ -15,7 +15,7 @@ olefile==0.44
 pytz==2017.2
 requests==2.18.4
 six==1.11.0
-urllib3==1.22
+urllib3==1.26.5
 wagtail==1.12.2
 webencodings==0.5.1
 wsgiref==0.1.2
